@@ -1,0 +1,44 @@
+<div class="passport-entry">
+  <div class="passport-page">
+    <div class="passport-photo">
+      <img [src]="travel()?.image" [routerLink]="['/travel-detail', travel()?.id]" />
+    </div>
+
+    <div class="passport-data">
+      <h3 class="passport-city">{{ travel()?.city }}</h3>
+      <p class="passport-country">{{ travel()?.country }}</p>
+
+      <dl class="passport-fields">
+        <div>
+          <dt>Città</dt>
+          <dd>{{ travel()?.city }}</dd>
+        </div>
+        <div>
+          <dt>Paese</dt>
+          <dd>{{ travel()?.country }}</dd>
+        </div>
+        <div>
+          <dt>Anno</dt>
+          <dd>{{ travel()?.year }}</dd>
+        </div>
+        <div>
+          <dt>Rating</dt>
+          <dd>⭐ {{ travel()?.rating }}</dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+
+  <div class="passport-mrz">
+    <span>
+      P&lt;{{ travel()?.country | uppercase }}&lt;{{
+        travel()?.city | uppercase
+      }}<<<<<<<<<<<<<<<<<<<</span
+    >
+  </div>
+
+  <div class="passport-stamp">
+    <span class="stamp-inner">TRAVEL</span>
+    <span class="stamp-sub">APPROVED</span>
+  </div>
+</div>

@@ -1,0 +1,149 @@
+.login-page {
+min-height: calc(100vh - 70px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 16px;
+  
+  background-image: url('https://i.pinimg.com/1200x/6d/6a/6d/6d6a6dafab5aa47aee486f4bd88667a9.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+
+  position: relative;
+}
+
+.login-title {
+  text-align: center;
+  margin-bottom: 18px;
+  font-size: 26px;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.login-title span {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: #64748b;
+  margin-top: 4px;
+}
+
+.login-container {
+  width: 100%;
+  max-width: 420px;
+  padding: 28px 26px 30px;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(0,0,0,0.06);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(15,23,42,0.12);
+  backdrop-filter: blur(10px);
+}
+
+.error-text {
+  color: #b91c1c;
+  background: #fee2e2;
+  padding: 10px 12px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.login-form label {
+  font-weight: 500;
+  color: #0f172a;
+  font-size: 0.9rem;
+}
+
+.login-form input {
+  margin-top: 4px;
+  padding: 10px 12px;
+  border: 1px solid #cbd5f5;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  background: #ffffff;
+  color: #0f172a;
+  box-shadow: 0 1px 4px rgba(15,23,42,0.04);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.1s ease;
+}
+
+.login-form input:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 1px rgba(37,99,235,0.25);
+  transform: translateY(-1px);
+}
+
+.login-actions {
+  text-align: center;
+  margin-top: 22px;
+}
+
+.login-actions button {
+  background-color: #2563eb;
+  color: white;
+  font-size: 0.95rem;
+  padding: 10px 40px;
+  border: none;
+  border-radius: 999px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.35);
+}
+
+.login-actions button:hover {
+  background-color: #1d4ed8;
+  transform: translateY(-1px);
+  box-shadow: 0 10px 22px rgba(37, 99, 235, 0.45);
+}
+
+.login-actions button:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
+}
+
+.login-extra {
+  margin-top: 14px;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+.login-extra a {
+  color: #2563eb;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.login-extra a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  .login-page {
+    padding: 24px 12px;
+  }
+
+  .login-container {
+    padding: 22px 18px 24px;
+    box-shadow: 0 6px 18px rgba(15,23,42,0.14);
+  }
+
+  .login-title {
+    font-size: 22px;
+    margin-bottom: 12px;
+  }
+
+  .login-actions button {
+    width: 100%;
+    padding: 10px 0;
+  }
+}

@@ -1,0 +1,35 @@
+<header class="site-header">
+  <div class="header-bg"></div>
+
+  <div class="header-inner">
+    <a class="brand" [routerLink]="['/home']">
+      <span class="brand-icon">🧭</span>
+      <span class="brand-text">TravelBlog</span>
+    </a>
+
+    <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+    <label for="nav-toggle" class="nav-toggle-btn" aria-label="Apri/chiudi menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </label>
+    @if(auth.isLogged){
+    <nav class="nav">
+      <ul class="nav-list">
+        <li>
+          <a class="nav-link" [routerLink]="['/visited-travels']"><span>🌍 </span>Già visitati</a>
+        </li>
+        <li>
+          <a class="nav-link" [routerLink]="['/next-travels']"><span>💭 </span>Da vedere</a>
+        </li>
+      </ul>
+
+      <a class="btn-cta" [routerLink]="['/new-travel']">+ Nuovo viaggio</a>
+
+      <button class="btn-logout" aria-label="Logout" title="Esci" (click)="onLogOut()">
+        <a class="nav-link"><span>🚪 </span>Logout</a>
+      </button>
+    </nav>
+    }
+  </div>
+</header>

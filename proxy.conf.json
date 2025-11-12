@@ -1,0 +1,9 @@
+{
+  "/api": {
+    "target": "https://chiropodial-myron-nonphysical.ngrok-free.dev",
+    "secure": true,
+    "changeOrigin": true,
+    "pathRewrite": { "^api": "" },
+    "logLevel": "debug"
+  }
+}

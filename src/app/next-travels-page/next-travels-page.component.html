@@ -1,0 +1,48 @@
+<div class="visited-page">
+  @if (loading()) {
+  <h2 class="visited-title">
+    I prossimi viaggi
+    <span class="visited-subtitle"> La tua lista di destinazioni da esplorare. </span>
+  </h2>
+
+  <p class="loading-text">Caricamento in corso...</p>
+  } @else {
+
+  <div class="travels-grid">
+    @for (travel of travels(); track travel.id) {
+    <article class="passport-entry" [routerLink]="['/travel-detail', travel.id]">
+      <div class="passport-page">
+        <div class="passport-photo">
+          <img [src]="travel.image" [alt]="travel.city + ' - ' + travel.country" />
+        </div>
+
+        <div class="passport-data">
+          <h3 class="passport-city">{{ travel.city }}</h3>
+          <p class="passport-country">{{ travel.country }}</p>
+
+          <dl class="passport-fields">
+            <div>
+              <dt>Città</dt>
+              <dd>{{ travel.city }}</dd>
+            </div>
+            <div>
+              <dt>Paese</dt>
+              <dd>{{ travel.country }}</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+
+      <div class="passport-mrz">
+        P&lt;{{ travel.country | uppercase }}&lt;{{ travel.city | uppercase }}<<<<<<<<<<<<<<<<<<<
+      </div>
+
+      <div class="passport-stamp">
+        <span class="stamp-inner">TRAVEL</span>
+        <span class="stamp-sub">PLANNED</span>
+      </div>
+    </article>
+    }
+  </div>
+  }
+</div>

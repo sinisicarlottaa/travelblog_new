@@ -1,0 +1,489 @@
+.travel-detail-page {
+  min-height: calc(100vh - 80px);
+  padding: 32px 16px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  background: radial-gradient(circle at top, #fdf6ec 0, #f9fafb 45%, #f3f4f6 100%);
+}
+
+.travel-detail-card {
+  width: 100%;
+  max-width: 1120px;
+  background: #ffffff;
+  border-radius: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.14);
+  overflow: hidden;
+}
+
+.detail-actions {
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto -4px;
+  padding: 0 4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.detail-actions-right {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  border-radius: 999px;
+  border: 1px solid #e2d2c2;
+  background: #fdf6ec;
+  color: #6b5e54;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.1s ease,
+    box-shadow 0.2s ease;
+}
+
+.back-btn:hover {
+  background-color: #f8ecdd;
+  border-color: #d4a373;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(148, 121, 88, 0.2);
+}
+
+.back-icon {
+  font-size: 1rem;
+}
+
+.edit-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 16px;
+  border-radius: 999px;
+  border: none;
+  background: #2b7abf;
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 6px 14px rgba(43, 122, 191, 0.35);
+  transition:
+    background-color 0.2s ease,
+    transform 0.1s ease,
+    box-shadow 0.2s ease;
+}
+
+.edit-btn:hover {
+  background-color: #1d6fa5;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(43, 122, 191, 0.45);
+}
+
+.edit-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 10px rgba(43, 122, 191, 0.3);
+}
+
+.edit-icon {
+  font-size: 0.95rem;
+  line-height: 1;
+}
+
+.delete-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 16px;
+  border-radius: 999px;
+  border: 1px solid #dc2626;
+  background: #fef2f2;
+  color: #b91c1c;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.1s ease,
+    box-shadow 0.2s ease;
+}
+
+.delete-btn:hover {
+  background-color: #fee2e2;
+  border-color: #b91c1c;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(220, 38, 38, 0.25);
+}
+
+.delete-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 3px 8px rgba(220, 38, 38, 0.2);
+}
+
+.delete-icon {
+  font-size: 0.95rem;
+  line-height: 1;
+}
+
+.delete-btn[disabled],
+.edit-btn[disabled] {
+  opacity: 0.6;
+  cursor: default;
+  transform: none;
+  box-shadow: none;
+}
+
+.detail-hero {
+ position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 60%) minmax(0, 42%);
+  max-height: 400px;
+  min-height: 250px; 
+  background: #7c7c7c;
+  color: #fff;
+  overflow: hidden;
+}
+
+.hero-image-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;           
+  image-rendering: auto;       
+  transform: none;           
+  filter: none;               
+  will-change: auto;
+}
+
+.hero-gradient {
+ position: absolute;
+  inset: 0;
+  
+}
+
+.hero-content {
+ position: relative;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: linear-gradient(
+    to bottom right,
+    rgba(15, 23, 42, 0.9),
+    #646464
+  );
+}
+
+.hero-chip {
+  align-self: flex-start;
+  padding: 5px 11px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  border: 1px solid rgba(252, 252, 252, 0.32);
+  margin-bottom: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.visited-chip {
+  background: rgba(248, 250, 252, 0.08);
+  color: #fefce8;
+}
+
+.to-visit-chip {
+  background: rgba(191, 219, 254, 0.12);
+  color: #bfdbfe;
+}
+
+.hero-title {
+  margin: 2px 0 0;
+  font-size: 1.8rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.hero-subtitle {
+  margin: 6px 0 12px;
+  font-size: 0.98rem;
+  color: #e5e7eb;
+}
+
+.hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.85rem;
+}
+
+.hero-rating {
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(250, 204, 21, 0.12);
+  color: #fbbf24;
+  border: 1px solid rgba(250, 204, 21, 0.55);
+}
+
+.hero-tag {
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(148, 163, 184, 0.18);
+  border: 1px solid rgba(148, 163, 184, 0.75);
+  color: #e5e7eb;
+}
+
+.detail-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1.3fr);
+  gap: 22px;
+  padding: 22px 22px 24px;
+}
+
+.detail-aside:empty {
+  display: none;
+}
+
+.detail-layout:has(.detail-aside:empty) {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.detail-main {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.detail-aside {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.detail-section {
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: #fdf6ec;
+  border: 1px solid rgba(212, 163, 115, 0.4);
+}
+
+.section-title {
+  margin: 0 0 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #4b3c2f;
+}
+
+.section-text {
+  margin: 0;
+  font-size: 0.92rem;
+  color: #5c4a3a;
+  line-height: 1.6;
+  text-align: left;
+}
+
+.detail-passport {
+  border-radius: 16px;
+  background: #fdf6ec;
+  border: 2px solid #b87740;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+.passport-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  background: #e7ddcf;
+  border-bottom: 1px solid #c9b89f;
+}
+
+.passport-label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #6b5e54;
+}
+
+.passport-year {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #4b3c2f;
+}
+
+.passport-body {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 10px;
+  padding: 10px 12px 8px;
+  background: repeating-linear-gradient(
+    #fdf6ec,
+    #fdf6ec 26px,
+    #f8ecdd 28px
+  );
+}
+
+.passport-photo {
+  width: 110px;
+  height: 140px;
+  border-radius: 8px;
+  border: 2px solid #c9a679;
+  background: #e8dfd1;
+  overflow: hidden;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.15);
+}
+
+.passport-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.passport-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px 10px;
+  font-size: 0.8rem;
+  color: #5c4a3a;
+}
+
+.field-label {
+  display: block;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.11em;
+  color: #9a8a7a;
+}
+
+.field-value {
+  display: block;
+  font-weight: 600;
+  color: #3f3a34;
+}
+
+.passport-mrz {
+  background: #e7ddcf;
+  border-top: 1px solid #c9b89f;
+  padding: 6px 10px;
+  font-family: "Courier New", monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  color: #463a33;
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.food-section {
+  background: #fff;
+}
+
+.food-list {
+  list-style: none;
+  padding: 0;
+  margin: 6px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.food-item {
+  padding: 6px 8px;
+  border-radius: 10px;
+  background: #fdf6ec;
+  border: 1px dashed rgba(212, 163, 115, 0.6);
+}
+
+.food-dish {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #4b3c2f;
+}
+
+.food-place {
+  font-size: 0.8rem;
+  color: #8a7a6a;
+}
+
+/* Error text */
+.error-text {
+  text-align: center;
+  font-size: 0.95rem;
+  color: #b91c1c;
+  background: #fee2e2;
+  padding: 8px 12px;
+  border-radius: 8px;
+  max-width: 480px;
+  margin: 20px auto 0;
+}
+
+.loading-text,
+.empty-text,
+p {
+ margin-top: 100px;
+  text-align: center;
+  font-size: 1rem;
+  color: #6b5e54
+}
+
+/* 📱 Responsive */
+@media (max-width: 900px) {
+  .detail-hero {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .hero-image {
+    max-height: 230px;
+  }
+
+  .hero-content {
+    padding: 16px 16px 18px;
+  }
+
+  .detail-layout {
+    grid-template-columns: 1fr;
+    padding: 18px 16px 20px;
+  }
+}
+
+@media (max-width: 640px) {
+  .travel-detail-page {
+    padding: 22px 10px 32px;
+  }
+
+  .detail-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .detail-actions-right {
+    justify-content: flex-end;
+  }
+
+  .back-btn,
+  .edit-btn,
+  .delete-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}

@@ -1,0 +1,13 @@
+<div class="card" (click)="travelOnClick.emit(travel()!)">
+  <div class="card-media">
+    <img [src]="travel()?.image" />
+  </div>
+
+  <div class="card-info">
+    <h3>{{ travel()?.city }}</h3>
+    <p>{{ travel()?.description }}</p>
+    <div class="card-actions">
+      <a class="btn-info"  [routerLink]="['/travel-detail', travel()?.id]">Ottieni più info</a>
+    </div>
+  </div>
+</div>

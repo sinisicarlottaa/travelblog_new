@@ -1,0 +1,127 @@
+.filters-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px 100px;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 14px 18px;
+  margin: 20px auto;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+  max-width: 900px;
+}
+
+.filter-control {
+  display: flex;
+  flex-direction: column;
+  min-width: 160px;
+}
+
+.filter-control label {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #6b5e54;
+  margin-bottom: 4px;
+}
+
+.filter-control select {
+  border-radius: 999px;
+  border: 1px solid #e2d2c2;
+  padding: 5px 10px;
+  font-size: 0.9rem;
+  background: #fff;
+  color: #3f3a34;
+  cursor: pointer;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.filter-control select:focus {
+  border-color: #d4a373;
+  box-shadow: 0 0 0 1px rgba(212, 163, 115, 0.4);
+  outline: none;
+}
+
+.filter-control select:hover {
+  border-color: #d4a373;
+}
+
+select {
+  scrollbar-width: thin;
+  scrollbar-color: #d4a373 #f5f5f5;
+}
+select::-webkit-scrollbar {
+  width: 8px;
+}
+select::-webkit-scrollbar-thumb {
+  background-color: #d4a373;
+  border-radius: 6px;
+}
+select::-webkit-scrollbar-thumb:hover {
+  background-color: #b87740;
+}
+
+@media (max-width: 600px) {
+  .filters-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    padding: 12px 14px;
+  }
+
+  .filter-control {
+    min-width: 100%;
+  }
+}
+
+.travels-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 420px));
+  justify-content: center;
+  gap: 20px 80px;
+  padding: 32px 8px 48px;
+  max-width: 1500px;
+  margin: 0 auto 60px;
+}
+
+.loading-text,
+.empty-text,
+p {
+margin-top: 100px;
+  text-align: center;
+  font-size: 1rem;
+  color: #6b5e54
+}
+
+.buttonArrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #fdf6ec;
+  border: 2px solid #e2d2c2;
+  color: #5a442d;
+  font-size: 1.4rem;
+  font-weight: 700;
+  border-radius: 50%;
+  width: 56px;
+  height: 56px;
+  cursor: pointer;
+  box-shadow: 0 6px 14px rgba(148, 121, 88, 0.25);
+  transition: all 0.25s ease;
+  margin-top: 40px;
+  margin-right: 80px; /* distanza dal bordo destro */
+  float: right; /* la posiziona in fondo a destra */
+}
+
+.buttonArrow:hover {
+  background: #f8ecdd;
+  border-color: #d4a373;
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 20px rgba(148, 121, 88, 0.3);
+}
+
+.buttonArrow:active {
+  transform: translateY(0) scale(0.97);
+  box-shadow: 0 4px 10px rgba(148, 121, 88, 0.2);
+}

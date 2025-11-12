@@ -1,0 +1,44 @@
+.latest-destinations {
+  padding: 30px 24px;
+  max-width: 1600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.latest-destinations h2 {
+  font-family: 'Poppins', Arial, sans-serif;
+  font-weight: 700;
+  font-size: 1.8rem;
+  margin-bottom: 24px;
+}
+
+.carousel {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.cards {
+  display: flex;
+  gap: 10px;
+  overflow: hidden;
+  scroll-behavior: smooth;
+  padding: 6px; 
+  margin-bottom: 30px;
+}
+
+.graph-title {
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+}
+
+.loading-text,
+.empty-text,
+p {
+  margin-top: 100px;
+  text-align: center;
+  font-size: 1rem;
+  color: #6b5e54;
+}

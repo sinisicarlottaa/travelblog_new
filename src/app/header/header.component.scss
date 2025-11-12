@@ -1,0 +1,240 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  background-color: #f9f7f3; 
+  color: #1e293b;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+.header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: #1e293b;
+}
+.brand-icon {
+  font-size: 22px;
+}
+.brand-text {
+  font-weight: 600;
+  font-size: 1.25rem;
+  letter-spacing: 0.3px;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.nav-list {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-link {
+  position: relative;
+  display: inline-block;
+  padding: 8px 10px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #3f3a34;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.nav-link:hover {
+  background: rgba(212, 163, 115, 0.15);
+  color: #1e293b;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  bottom: 4px;
+  height: 2px;
+  background: #d4a373; 
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.2s ease-out;
+}
+.nav-link:hover::after {
+  transform: scaleX(1);
+}
+
+.nav-link.is-active {
+  background: rgba(212, 163, 115, 0.18);
+  color: #b87740; 
+}
+
+.btn-cta {
+  display: inline-block;
+  text-decoration: none;
+  color: #fff;
+  background-color: #d4a373; 
+  font-weight: 600;
+  padding: 9px 14px;
+  border-radius: 999px;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 10px rgba(180, 126, 60, 0.3);
+}
+.btn-cta:hover {
+  background-color: #b87740; 
+  transform: translateY(-1px);
+}
+
+.nav-toggle {
+  display: none;
+}
+.nav-toggle-btn {
+  display: none;
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.05);
+  border: none;
+}
+.nav-toggle-btn .bar {
+  width: 22px;
+  height: 2px;
+  background: #1e293b;
+  margin: 3px 0;
+  border-radius: 2px;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.nav-toggle:checked + .nav-toggle-btn .bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.nav-toggle:checked + .nav-toggle-btn .bar:nth-child(2) {
+  opacity: 0;
+}
+.nav-toggle:checked + .nav-toggle-btn .bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.btn-logout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 8px;
+  border-radius: 50%;
+  transition: background 0.2s ease, transform 0.1s ease;
+  position: relative;
+}
+
+.btn-logout:hover {
+  background: rgba(212, 163, 115, 0.15);
+  transform: translateY(-1px);
+}
+
+.logout-icon {
+  display: block;
+  line-height: 1;
+}
+
+/* Tooltip */
+.btn-logout::after {
+  content: attr(title);
+  position: absolute;
+  bottom: -30px;
+  background: #3f3a34;
+  color: white;
+  font-size: 0.65rem;
+  padding: 3px 8px;
+  border-radius: 6px;
+  opacity: 0;
+  transform: translateY(4px);
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  white-space: nowrap;
+}
+.btn-logout:hover::after {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 860px) {
+  .nav-toggle-btn {
+    display: flex;
+    margin-left: auto;
+  }
+
+  .nav {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    display: grid;
+    gap: 10px;
+    padding: 16px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-10px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+
+  .nav-list {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .btn-cta {
+    width: 100%;
+    text-align: center;
+  }
+
+  .nav-toggle:checked ~ .nav {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .btn-logout {
+    justify-self: start;
+    font-size: 1.4rem;
+    padding: 10px;
+  }
+
+  .btn-logout::after {
+    display: none;
+  }
+}

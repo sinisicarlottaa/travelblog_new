@@ -1,0 +1,124 @@
+<div class="travel-detail-page">
+  @if (loading()) {
+  <p class="loading-text">Caricamento in corso...</p>
+  } @else if (error()) {
+  <p class="error-text">{{ error() }}</p>
+  } @else if (travel()) {
+
+  <div class="detail-actions">
+    @if(travel()?.type === 'Y') {
+    <button class="back-btn" [routerLink]="'/visited-travels'">
+      <span class="back-icon">←</span>
+      <span>Torna ai viaggi</span>
+    </button>
+    }@else {
+    <button class="back-btn" [routerLink]="'/next-travels'">
+      <span class="back-icon">←</span>
+      <span>Torna ai viaggi</span>
+    </button>
+    }
+
+    <div class="detail-actions-right">
+      <button
+        class="edit-btn"
+        type="button"
+        [routerLink]="'/new-travel'"
+        [queryParams]="{ editId: travel()!.id }"
+      >
+        <span class="edit-icon">✏️</span>
+        <span>Modifica viaggio</span>
+      </button>
+
+      <button class="delete-btn" type="button" (click)="onDelete()">
+        <span class="delete-icon">🗑️</span>
+        <span>Elimina viaggio</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="travel-detail-card">
+    <div class="detail-hero">
+      <div class="hero-image-wrapper">
+        <img
+          class="hero-image"
+          [src]="travel()!.image"
+          [alt]="travel()!.city + ' - ' + travel()!.country"
+        />
+        <div class="hero-gradient"></div>
+      </div>
+
+      <div class="hero-content">
+        <div
+          class="hero-chip"
+          [ngClass]="{
+            'visited-chip': travel()!.type === 'Y',
+            'to-visit-chip': travel()!.type === 'N'
+          }"
+        >
+          🌍
+          {{ travel()!.type === 'Y' ? 'Viaggio già vissuto' : 'Viaggio da fare' }}
+        </div>
+
+        <h1 class="hero-title">{{ travel()!.city }}</h1>
+
+        <p class="hero-subtitle">
+          {{ travel()!.country }}
+          @if(travel()?.type === 'Y' ) { • {{ travel()!.year }}
+          }
+        </p>
+
+        <div class="hero-meta">
+          @if(travel()?.type === 'Y') {
+          <div class="hero-rating">⭐ {{ travel()!.rating }} / 5</div>
+          }
+          <div class="hero-tag">✈️ TravelBlog Passport</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="detail-layout">
+      <div class="detail-main">
+        <section class="detail-section">
+          <h2 class="section-title">Descrizione</h2>
+          <p class="section-text">
+            {{ travel()!.description }}
+          </p>
+        </section>
+
+        @if(travel()?.type === 'Y') {
+        <section class="detail-section">
+          <h2 class="section-title">Cosa mi è piaciuto di più</h2>
+          <p class="section-text">
+            {{ travel()!.highlights }}
+          </p>
+        </section>
+
+        <section class="detail-section">
+          <h2 class="section-title">Attività</h2>
+          <p class="section-text">
+            {{ travel()!.activities }}
+          </p>
+        </section>
+        }
+      </div>
+
+      <aside class="detail-aside">
+        @if(travel()?.type === 'Y') {
+
+        <div class="detail-section food-section">
+          <h2 class="section-title">Cibo provato</h2>
+          <ul class="food-list">
+            @for (food of travel()!.foods; track food.dish) {
+            <li class="food-item">
+              <div class="food-dish">{{ food.dish }}</div>
+              <div class="food-place">@ {{ food.place }}</div>
+            </li>
+            }
+          </ul>
+        </div>
+        }
+      </aside>
+    </div>
+  </div>
+  }
+</div>

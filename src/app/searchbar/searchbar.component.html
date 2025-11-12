@@ -1,0 +1,14 @@
+<div class="search-container">
+  <nav class="navbar">
+    <form class="search-form" role="search">
+      <input
+        type="text"
+        placeholder="Cerca una destinazione"
+        name="search"
+        #searchInput
+        (input)="onInputChange(searchInput.value)"
+      />
+      <button type="button">Search</button>
+    </form>
+  </nav>
+</div>
