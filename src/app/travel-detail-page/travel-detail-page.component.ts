@@ -3,8 +3,9 @@ import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { firstValueFrom } from 'rxjs';
 import Swal from 'sweetalert2';
 import { Travel } from '../shared/travel.model';
-import { TravelService } from '../shared/travel.service';
+import { TravelService } from '../shared/service/travel.service';
 import { NgClass } from '@angular/common';
+import { ToastService } from '../shared/toast.service';
 
 @Component({
   selector: 'app-travel-detail-page',
@@ -16,6 +17,7 @@ export class TravelDetailPageComponent {
   private route = inject(ActivatedRoute);
   private travelService = inject(TravelService);
   private router = inject(Router);
+  private toastService = inject(ToastService);
 
   travel = signal<Travel | null>(null);
   loading = signal(false);
@@ -23,6 +25,10 @@ export class TravelDetailPageComponent {
 
   async ngOnInit(): Promise<void> {
     const id = this.route.snapshot.paramMap.get('travelId');
+    this.init(id);
+  }
+
+  async init(id: string | null) {
     if (!id) {
       this.error.set('ID viaggio non valido.');
       return;
@@ -31,8 +37,6 @@ export class TravelDetailPageComponent {
     this.loading.set(true);
 
     try {
-      //const travels = await firstValueFrom(this.travelService.getTravels());
-      //const found = travels.find((t) => t.id === id) ?? null;
       const found = await firstValueFrom(this.travelService.getTravelById(id));
 
       if (!found) {
@@ -52,17 +56,7 @@ export class TravelDetailPageComponent {
   async onDelete() {
     const travel = this.travel();
     if (!travel) return;
-
-    const confirm = await Swal.fire({
-      title: 'Sei sicuro?',
-      text: 'Il viaggio verrà eliminato definitivamente!',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#d33',
-      cancelButtonColor: '#3085d6',
-      confirmButtonText: 'Sì, elimina',
-      cancelButtonText: 'Annulla',
-    });
+    const confirm: any = this.toastService.dialogDeleteElement();
 
     if (!confirm.isConfirmed) return;
 
@@ -70,30 +64,12 @@ export class TravelDetailPageComponent {
 
     try {
       await firstValueFrom(this.travelService.delete(travel.id));
-
-      await Swal.fire({
-        toast: true,
-        position: 'top-end',
-        timer: 3000,
-        showConfirmButton: false,
-        title: 'Eliminato!',
-        text: 'Viaggio rimosso con successo.',
-        icon: 'success',
-      });
+      this.toastService.showToastSuccess('Viaggio rimosso con successo.');
 
       this.router.navigate(['/visited-travels']);
     } catch (error) {
       console.error('Errore durante l’eliminazione:', error);
-
-      await Swal.fire({
-        toast: true,
-        position: 'top-end',
-        timer: 3000,
-        showConfirmButton: false,
-        title: 'Errore!',
-        text: 'Impossibile eliminare il viaggio.',
-        icon: 'error',
-      });
+      this.toastService.dialogDeleteElement();
     } finally {
       this.loading.set(false);
     }

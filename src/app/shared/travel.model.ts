@@ -6,8 +6,8 @@ export interface Travel {
   type: 'Y' | 'N';
   image: string;
   description: string;
-  highlights: string[];
-  activities: string[];
+  highlights: string;
+  activities: string;
   foods: {
     dish: string;
     place: string;

@@ -1,6 +1,8 @@
 import { Component, inject, input } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
-import { AuthService } from '../shared/auth.service';
+import { AuthService } from '../shared/auth/auth.service';
+import { ThemeComponent } from '../theme/theme.component';
+import { ThemeService } from '../shared/service/theme.service';
 
 @Component({
   selector: 'app-header',
@@ -10,12 +12,13 @@ import { AuthService } from '../shared/auth.service';
 })
 export class HeaderComponent {
   private router = inject(Router);
-  public auth = inject(AuthService);
+  public authService = inject(AuthService);
   path = input<string>();
 
   onLogOut() {
-    this.auth.isLogged = false;
-    sessionStorage.clear();
-    this.router.navigate(['/']);
-  }
+  this.authService.logout();
+  sessionStorage.clear(); // opzionale
+  this.router.navigate(['/']);
+}
+
 }

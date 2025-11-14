@@ -1,8 +1,23 @@
-/* You can add global styles to this file, and also import other style files */
+// :root {
+//   --background-color: #{$color-light-background};
+//   --text-color: #{$color-light-text};
+// }
+
+// .dark-mode {
+//   --background-color: #{$color-dark-background};
+//   --text-color: #{$color-dark-text};
+// }
+
 body {
-  font-family: 'Poppins', Arial, sans-serif;
+   font-family: 'Poppins', Arial, sans-serif;
+   margin: 0;
+  padding: 0;
+   background: #f8fafc;
+ }
+
+html, body {
   margin: 0;
   padding: 0;
-  background: #f8fafc;
-  color: #0f172a;
+  overflow-x: hidden;
+  width: 100%;
 }

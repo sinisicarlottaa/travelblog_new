@@ -1,13 +1,13 @@
 import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { CardComponent } from '../card/card.component';
-import { TravelService } from '../shared/travel.service';
+import { TravelService } from '../shared/service/travel.service';
 import { Travel } from '../shared/travel.model';
 import { firstValueFrom } from 'rxjs';
 import { GraphsComponent } from "../graphs/graphs.component";
 
 @Component({
   selector: 'app-home',
-  imports: [CardComponent, GraphsComponent],
+  imports: [CardComponent],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.scss',
 })
@@ -36,8 +36,4 @@ export class HomeComponent implements OnInit {
       this.loading.set(false);
     }
   }
-
-  // onTravelClicked(event: Travel) {
-  //   console.log('ciao');
-  // }
 }

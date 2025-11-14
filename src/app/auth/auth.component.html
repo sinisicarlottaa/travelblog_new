@@ -1,0 +1,56 @@
+<div class="login-container">
+  <h2 class="login-title">
+    {{ isRegistered ? 'Login' : 'Register' }}
+  </h2>
+
+  @if (error) {
+    <p class="error-text">{{ error }}</p>
+  }
+
+  <form [formGroup]="loginForm" (ngSubmit)="onLogin()" class="login-form">
+    
+    <label for="email">Email</label>
+    <input id="email" type="email" placeholder="Inserisci la mail" formControlName="email" />
+
+    @if (isRegistered) {
+      <!-- LOGIN -->
+      <label for="password">Password</label>
+      <input
+        id="password"
+        type="password"
+        placeholder="Inserisci la password"
+        formControlName="password"
+      />
+    } @else {
+      <!-- REGISTER -->
+      <label for="password">Password</label>
+      <input
+        id="password"
+        type="password"
+        placeholder="Inserisci la password"
+        formControlName="password"
+      />
+
+      <label for="confirmPassword">Conferma password</label>
+      <input
+        id="confirmPassword"
+        type="password"
+        placeholder="Conferma la password"
+        formControlName="confirmPassword"
+      />
+    }
+
+    <div class="login-actions">
+      <button type="submit">
+        {{ isRegistered ? 'Login' : 'Registrati' }}
+      </button>
+
+      @if (isRegistered) {
+        <p class="register-text">
+          Non sei ancora registrato?
+          <a class="register-link" [routerLink]="'/register'">Registrati qui!</a>
+        </p>
+      }
+    </div>
+  </form>
+</div>

@@ -2,14 +2,14 @@ import { inject, Injectable, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { Travel } from './travel.model';
+import { Travel } from '../travel.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TravelService {
   private http = inject(HttpClient);
-  private baseUrl: string = "https://chiropodial-myron-nonphysical.ngrok-free.dev/api/travel/";
+  private baseUrl: string = 'https://chiropodial-myron-nonphysical.ngrok-free.dev/api/travel/';
 
   // POST
   public getTravels(): Observable<Travel[]> {
@@ -34,5 +34,9 @@ export class TravelService {
   // PUT (UPDATE)
   update(travel: Travel) {
     return this.http.put<Travel>(`${this.baseUrl}update`, travel);
+  }
+
+  loadUsers(): Observable<any[]> {
+    return this.http.get<any[]>('http://localhost:3000/');
   }
 }

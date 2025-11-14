@@ -1,11 +1,12 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { firstValueFrom } from 'rxjs';
 import Swal from 'sweetalert2';
 
-import { TravelService } from '../shared/travel.service';
+import { TravelService } from '../shared/service/travel.service';
 import { Travel } from '../shared/travel.model';
+import { ToastService } from '../shared/toast.service';
 
 @Component({
   selector: 'app-new-travel-page',
@@ -18,44 +19,38 @@ export class NewTravelPageComponent implements OnInit {
   private travelService = inject(TravelService);
   private route = inject(ActivatedRoute);
   private router = inject(Router);
+  private toastService = inject(ToastService);
 
   isEditMode = false;
   isLoading = false;
 
-  formAddTravel = new FormGroup({
-    id: new FormControl(Math.random().toString()),
-    city: new FormControl('', {
-      nonNullable: true,
-      validators: [Validators.required],
-    }),
-    country: new FormControl('', {
-      nonNullable: true,
-      validators: [Validators.required],
-    }),
-    year: new FormControl<number | null>(null),
-    type: new FormControl<'Y' | 'N'>('Y', {
-      nonNullable: true,
-      validators: [Validators.required],
-    }),
-    image: new FormControl('', {
-      nonNullable: true,
-      validators: [Validators.required],
-    }),
-    description: new FormControl('', {
-      nonNullable: true,
-      validators: [Validators.required],
-    }),
-    highlights: new FormControl<string[]>([], { nonNullable: true }),
-    activities: new FormControl<string[]>([], { nonNullable: true }),
-    food: new FormGroup({
-      dish: new FormControl('', { nonNullable: true }),
-      place: new FormControl('', { nonNullable: true }),
-    }),
-    rating: new FormControl<number | null>(null),
-  });
+  formAddTravel: FormGroup;
 
-  async ngOnInit(): Promise<void> {
+  constructor(private fb: FormBuilder) {
+    this.formAddTravel = this.fb.group({
+      id: [Math.random().toString()],
+      city: ['', { nonNullable: true, validators: [Validators.required] }],
+      country: ['', { nonNullable: true, validators: [Validators.required] }],
+      year: [null, { validators: [Validators.required] }],
+      type: ['Y', [Validators.required]],
+      image: ['', { nonNullable: true, validators: [Validators.required] }],
+      description: ['', { nonNullable: true, validators: [Validators.required] }],
+      highlights: [''],
+      activities: [''],
+      food: this.fb.group({
+        dish: ['', ],
+        place: ['', ],
+      }),
+      rating: [null, { validators: [Validators.required] }],
+    });
+  }
+
+  ngOnInit() {
     const editId = this.route.snapshot.queryParamMap.get('editId');
+    this.init(editId);
+  }
+
+  async init(editId: string | null): Promise<void> {
     if (!editId) {
       return;
     }
@@ -86,11 +81,7 @@ export class NewTravelPageComponent implements OnInit {
       });
     } catch (e) {
       console.error(e);
-      await Swal.fire({
-        icon: 'error',
-        title: 'Errore',
-        text: 'Impossibile caricare il viaggio da modificare.',
-      });
+      this.toastService.showToastError('Impossibile caricare il viaggio da modificare.');
       this.router.navigate(['/visited-travels']);
     } finally {
       this.isLoading = false;
@@ -123,8 +114,8 @@ export class NewTravelPageComponent implements OnInit {
       type: value.type,
       image: value.image,
       description: value.description,
-      highlights: value.highlights ?? [],
-      activities: value.activities ?? [],
+      highlights: value.highlights,
+      activities: value.activities,
       foods: foodArray,
       rating: value.rating ?? 0,
     };
@@ -138,29 +129,18 @@ export class NewTravelPageComponent implements OnInit {
         await firstValueFrom(this.travelService.submit(travel));
       }
 
-      await Swal.fire({
-        toast: true,
-        position: 'top-end',
-        showConfirmButton: false,
-        timer: 3000,
-        icon: 'success',
-        title: this.isEditMode ? 'Viaggio aggiornato!' : 'Viaggio aggiunto!',
-      });
-
+      this.toastService.showToastSuccess(
+        this.isEditMode ? 'Viaggio aggiornato!' : 'Viaggio aggiunto!'
+      );
       this.router.navigate(['/visited-travels']);
     } catch (error) {
       console.error('Errore salvataggio viaggio:', error);
-      await Swal.fire({
-        toast: true,
-        position: 'top-end',
-        showConfirmButton: false,
-        timer: 3000,
-        icon: 'error',
-        title: 'Errore',
-        text: this.isEditMode
+
+      this.toastService.showToastError(
+        this.isEditMode
           ? 'Impossibile aggiornare il viaggio.'
-          : 'Impossibile aggiungere il viaggio.',
-      });
+          : 'Impossibile aggiungere il viaggio.'
+      );
     } finally {
       this.isLoading = false;
 
@@ -173,8 +153,8 @@ export class NewTravelPageComponent implements OnInit {
           type: 'Y',
           image: '',
           description: '',
-          highlights: [],
-          activities: [],
+          highlights: '',
+          activities: '',
           food: {
             dish: '',
             place: '',

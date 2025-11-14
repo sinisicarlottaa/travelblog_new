@@ -1,7 +1,7 @@
 import { Component, inject, signal } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
 import { Travel } from '../shared/travel.model';
-import { TravelService } from '../shared/travel.service';
+import { TravelService } from '../shared/service/travel.service';
 import { RouterLink } from '@angular/router';
 import { UpperCasePipe } from '@angular/common';
 

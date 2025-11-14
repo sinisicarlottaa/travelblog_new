@@ -6,7 +6,7 @@
         placeholder="Cerca una destinazione"
         name="search"
         #searchInput
-        (input)="onInputChange(searchInput.value)"
+        [formControl]="search"
       />
       <button type="button">Search</button>
     </form>
