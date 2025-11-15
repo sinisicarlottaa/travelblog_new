@@ -1,26 +1,41 @@
-.statistics  {
+/* ===========================
+   STATISTICS PAGE
+=========================== */
+
+.statistics {
   padding: 30px 24px;
   max-width: 1600px;
   margin: 0 auto;
   text-align: center;
+  color: var(--color-text-main);
+  background-color: var(--color-bg-body-lighter);
 }
 
+/* Titolo principale */
 .statistics h2 {
   font-family: 'Poppins', Arial, sans-serif;
   font-weight: 700;
   font-size: 1.8rem;
   margin-bottom: 24px;
+  color: var(--color-text-main);
 }
+
+/* Sottotitoli presenti nei grafici */
 .graph-title {
-    margin-bottom: 0px;
-    padding-bottom: 0px;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  color: var(--color-text-main);
 }
+
+/* ===========================
+   EMPTY / LOADING TEXT
+=========================== */
 
 .loading-text,
 .empty-text,
-p {
+.statistics p {
   margin-top: 100px;
   text-align: center;
   font-size: 1rem;
-  color: #6b5e54;
+  color: var(--color-text-muted);
 }

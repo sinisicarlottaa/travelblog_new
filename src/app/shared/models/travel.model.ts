@@ -13,4 +13,5 @@ export interface Travel {
     place: string;
   }[];
   rating: number;
+  user: string;
 }

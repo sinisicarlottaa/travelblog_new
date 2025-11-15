@@ -2,6 +2,7 @@ import { AfterViewInit, Component, ElementRef, ViewChild, inject, signal } from 
 import { TravelService } from '../shared/service/travel.service';
 import { firstValueFrom } from 'rxjs';
 import { Chart } from 'chart.js/auto';
+import { Filter } from '../shared/models/filter.model';
 
 @Component({
   selector: 'app-graphs',
@@ -16,9 +17,11 @@ export class GraphsComponent implements AfterViewInit {
   @ViewChild('yearChartCanvas') yearChartCanvas!: ElementRef;
   @ViewChild('countryChartCanvas') countryChartCanvas!: ElementRef;
 
+   filterActive = signal<Filter>({ country : '' , rating : '' , search : '' , user : '', year : null});
+
   async ngAfterViewInit() {
     // viaggi
-    const travels = await firstValueFrom(this.travelService.getTravels());
+    const travels = await firstValueFrom(this.travelService.getTravels(this.filterActive()));
 
     // filtra
     const visitedYear = travels.filter((t) => t.type === 'Y' && t.year);

@@ -1,15 +1,21 @@
+/* ===========================
+   VISITED PAGE
+=========================== */
+
 .visited-page {
   min-height: calc(100vh - 80px);
-  padding: 28px 0px 0px;
-  background: radial-gradient(circle at top, #fdf6ec 0, #f9fafb 45%, #f3f4f6 100%);
+  padding: 28px 0 0;
+  background: var(--color-bg-body-lighter);
 }
+
+/* Titolo + sottotitolo */
 
 .visited-title {
   max-width: 900px;
   margin: 0 auto 20px;
   font-size: 1.6rem;
   font-weight: 600;
-  color: #3f3a34;
+  color: var(--color-text-main);
 }
 
 .visited-title span.visited-subtitle {
@@ -17,27 +23,36 @@
   margin-top: 4px;
   font-size: 0.9rem;
   font-weight: 400;
-  color: #8a7a6a;
+  color: var(--color-text-muted);
 }
+
+/* ===========================
+   GRID
+=========================== */
 
 .travels-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0px, 450px)); 
+  grid-template-columns: repeat(3, minmax(0, 450px));
   justify-content: center;
   gap: 28px 20px;
   padding: 16px 26px 16px;
   max-width: 2100px;
+  margin: 0 auto;
 }
 
+/* ===========================
+   PASSPORT CARD
+=========================== */
+
 .passport-entry {
-   position: relative;
+  position: relative;
   width: 100%;
   max-width: 440px;
   border-radius: 18px;
-  border: 2px solid #b87740;
-  background: #fdf6ec;
+  border: 2px solid var(--color-primary-strong);
+  background: var(--color-bg-soft);
   height: 200px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  box-shadow: var(--shadow-soft);
   overflow: hidden;
   transition: transform 0.25s, box-shadow 0.25s;
   cursor: pointer;
@@ -47,8 +62,10 @@
 
 .passport-entry:hover {
   transform: translateY(-3px);
-  box-shadow: 0 10px 24px rgba(184, 119, 64, 0.3);
+  box-shadow: var(--shadow-strong);
 }
+
+/* Pagina stile passaporto */
 
 .passport-page {
   display: grid;
@@ -56,18 +73,20 @@
   gap: 10px;
   padding: 14px 14px 8px;
   background: repeating-linear-gradient(
-    #fdf6ec,
-    #fdf6ec 26px,
-    #f8ecdd 28px
+    var(--color-bg-soft),
+    var(--color-bg-soft) 26px,
+    var(--color-bg-body) 28px
   );
 }
+
+/* Foto */
 
 .passport-photo {
   width: 110px;
   height: 140px;
-  border: 2px solid #c9a679;
+  border: 2px solid var(--color-primary-soft);
   border-radius: 6px;
-  background: #e8dfd1;
+  background: var(--color-bg-body);
   overflow: hidden;
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.15);
 }
@@ -78,6 +97,8 @@
   object-fit: cover;
   filter: contrast(1.05) saturate(1.05);
 }
+
+/* Dati */
 
 .passport-data {
   display: flex;
@@ -93,7 +114,7 @@
   font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: #4b3c2f;
+  color: var(--color-text-main);
 }
 
 .passport-country {
@@ -101,7 +122,7 @@
   font-size: 0.8rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #8a7a6a;
+  color: var(--color-text-muted);
 }
 
 .passport-fields {
@@ -111,7 +132,7 @@
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 4px 10px;
   font-size: 0.8rem;
-  color: #5c4a3a;
+  color: var(--color-text-muted);
 }
 
 .passport-fields div {
@@ -123,32 +144,36 @@
   text-transform: uppercase;
   font-size: 0.65rem;
   letter-spacing: 0.12em;
-  color: #9a8a7a;
+  color: var(--color-text-muted);
 }
 
 .passport-fields dd {
   margin: 0;
   font-weight: 600;
-  color: #3f3a34;
+  color: var(--color-text-main);
 }
 
+/* MRZ (riga in basso tipo passaporto) */
+
 .passport-mrz {
- position: absolute;
-  bottom: 0;         
+  position: absolute;
+  bottom: 0;
   left: 0;
   right: 0;
-  background: #e7ddcf;
-  border-top: 1px solid #c9b89f;
+  background: var(--color-bg-body);
+  border-top: 1px solid var(--color-border-soft);
   padding: 6px 10px;
-  font-family: "Courier New", monospace;
+  font-family: 'Courier New', monospace;
   font-size: 0.7rem;
   letter-spacing: 0.18em;
-  color: #463a33;
+  color: var(--color-text-main);
   text-transform: uppercase;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+/* Timbro */
 
 .passport-stamp {
   position: absolute;
@@ -157,27 +182,27 @@
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  border: 3px solid #b87740;
-  color: #b87740;
+  border: 3px solid var(--color-primary-strong);
+  color: var(--color-primary-strong);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-family: "Courier New", monospace;
+  font-family: 'Courier New', monospace;
   font-size: 0.65rem;
   text-transform: uppercase;
   transform: rotate(-15deg);
   opacity: 0.85;
   background: transparent;
-  box-shadow: 0 0 0 2px rgba(184, 119, 64, 0.3);
+  box-shadow: 0 0 0 2px var(--color-primary-soft);
 }
 
 .passport-stamp::before {
-  content: "";
+  content: '';
   position: absolute;
   inset: 8px;
   border-radius: 50%;
-  border: 1px dashed rgba(184, 119, 64, 0.7);
+  border: 1px dashed var(--color-primary-soft);
 }
 
 .stamp-inner {
@@ -189,17 +214,27 @@
   font-size: 0.55rem;
   letter-spacing: 0.16em;
 }
-.loading-text,
-.empty-text,
-p {
- margin-top: 100px;
+
+/* ===========================
+   EMPTY / LOADING TEXT
+=========================== */
+
+.visited-page .loading-text,
+.visited-page .empty-text,
+.visited-page p {
+  margin-top: 100px;
   text-align: center;
   font-size: 1rem;
-  color: #6b5e54
+  color: var(--color-text-muted);
 }
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+
 @media (max-width: 900px) {
   .travels-grid {
-    grid-template-columns: minmax(0, 1fr); 
+    grid-template-columns: minmax(0, 1fr);
     max-width: 480px;
   }
 }

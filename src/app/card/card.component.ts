@@ -1,6 +1,6 @@
 import { Component, computed, EventEmitter, inject, input, output, Output } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { Travel } from '../shared/travel.model';
+import { Travel } from '../shared/models/travel.model';
 import { TravelService } from '../shared/service/travel.service';
 
 @Component({

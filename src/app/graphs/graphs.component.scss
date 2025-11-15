@@ -1,27 +1,23 @@
-
 .graph-wrapper {
   width: 100%;
   margin: 40px auto 0;
-}
-
-h3 {
-  font-family: 'Poppins', Arial, sans-serif;
-  font-weight: 700;
-  text-align: left;
-  font-size: 1.3rem;
-  margin-bottom: 24px;
+  color: var(--color-text-main);
 }
 
 .graph-title {
-    margin-bottom: 0px;
-    padding-bottom: 0px;
-    margin-left: 20px;
+  font-family: 'Poppins', Arial, sans-serif;
+  font-weight: 700;
+  font-size: 1.3rem;
+  margin: 0 0 16px 20px;
+  text-align: left;
+  color: var(--color-text-main);
 }
 
 .chart-container {
   margin-bottom: 50px;
 }
 
-.yearChartCanvas {
+.yearChartCanvas,
+.countryChartCanvas {
   height: 350px;
 }

@@ -7,7 +7,7 @@ export class AuthGuard implements CanActivate {
   constructor(private auth: AuthService, private router: Router) {}
 
   canActivate(): boolean {
-    if (sessionStorage.getItem('jwta')) {
+    if (sessionStorage.getItem('jwt')) {
       return true;
     } else {
       this.router.navigate(['/']);

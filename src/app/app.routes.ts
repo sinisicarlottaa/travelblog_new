@@ -1,11 +1,11 @@
 import { Routes } from '@angular/router';
-import { LoginComponent } from './login/login.component';
-import { AuthGuard } from './shared/auth.guard';
+import { AuthPageComponent } from './auth-page/auth-page.component';
+import { AuthGuard } from './shared/auth/auth.guard'; 
 
 export const routes: Routes = [
   {
     path: '',
-    component: LoginComponent,
+    component: AuthPageComponent,
   },
   {
     path: 'home',
@@ -13,11 +13,19 @@ export const routes: Routes = [
     loadComponent: () => import('./home-page/home-page.component').then((m) => m.HomeComponent),
   },
   {
-    path: 'visited-travels',
+    path: 'visited-mytravels',
     canActivate: [AuthGuard],
     loadComponent: () =>
-      import('./visited-travels-page/visited-travels-page.component').then(
-        (m) => m.VisitedTravelsPageComponent
+      import('./visited-mytravels-page/visited-mytravels-page.component').then(
+        (m) => m.VisitedMyTravelsPageComponent
+      ),
+  },
+  {
+    path: 'visited-alltravels',
+    canActivate: [AuthGuard],
+    loadComponent: () =>
+      import('./visited-alltravels-page/visited-alltravels-page.component').then(
+        (m) => m.VisitedAllTravelsPageComponent
       ),
   },
   {
@@ -26,6 +34,14 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./next-travels-page/next-travels-page.component').then(
         (m) => m.NextTravelsPageComponent
+      ),
+  },
+  {
+    path: 'statistics',
+    canActivate: [AuthGuard],
+    loadComponent: () =>
+      import('./statistics-page/statistics-page.component').then(
+        (m) => m.StatisticsPageComponent
       ),
   },
   {

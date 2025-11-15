@@ -3,6 +3,8 @@
   max-width: 1600px;
   margin: 0 auto;
   text-align: center;
+  color: var(--color-text-main);
+  background: var(--color-bg-body-lighter);
 }
 
 .latest-destinations h2 {
@@ -10,8 +12,8 @@
   font-weight: 700;
   font-size: 1.8rem;
   margin-bottom: 24px;
+  color: var(--color-text-main);
 }
-
 .carousel {
   position: relative;
   display: flex;
@@ -20,25 +22,20 @@
   overflow: hidden;
 }
 
-.cards {
-  display: flex;
-  gap: 10px;
-  overflow: hidden;
-  scroll-behavior: smooth;
-  padding: 6px; 
-  margin-bottom: 30px;
-}
+// .cards {
+//   display: flex;
+//   gap: 10px;
+//   overflow: hidden;
+//   scroll-behavior: smooth;
+//   padding: 6px;
+//   margin-bottom: 30px;
+// }
 
-.graph-title {
-    margin-bottom: 0px;
-    padding-bottom: 0px;
-}
-
-.loading-text,
-.empty-text,
-p {
-  margin-top: 100px;
-  text-align: center;
-  font-size: 1rem;
-  color: #6b5e54;
-}
+// .latest-destinations .loading-text,
+// .latest-destinations .empty-text,
+// .latest-destinations p.status-text {
+//   margin-top: 100px;
+//   text-align: center;
+//   font-size: 1rem;
+//   color: var(--color-text-muted);
+// }

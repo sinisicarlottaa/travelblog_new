@@ -1,23 +1,16 @@
-body {
-  font-family: 'Poppins', sans-serif;
-  margin: 0;
-  background-color: #f9f7f3; 
-  color: #1e293b;
-}
-
 .site-header {
   position: sticky;
   top: 0;
   z-index: 50;
-  background-color: (--background-color);
-  color: var(--text-color);
+  background: var(--color-bg-surface);
+  color: var(--color-text-main);
   backdrop-filter: blur(8px);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  border-bottom: 1px solid var(--color-border-soft);
+  box-shadow: var(--shadow-soft);
 }
 
 .header-inner {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 14px 24px;
   display: flex;
@@ -30,7 +23,7 @@ body {
   align-items: center;
   gap: 8px;
   text-decoration: none;
-  color: #1e293b;
+  color: var(--color-text-main);
 }
 .brand-icon {
   font-size: 22px;
@@ -44,7 +37,7 @@ body {
 .nav {
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: 10pxpx;
 }
 
 .nav-list {
@@ -62,14 +55,14 @@ body {
   padding: 8px 10px;
   border-radius: 8px;
   text-decoration: none;
-  color: #3f3a34;
   font-weight: 500;
+  color: var(--color-text-muted);
   transition: all 0.2s ease;
 }
 
 .nav-link:hover {
-  background: rgba(212, 163, 115, 0.15);
-  color: #1e293b;
+  background: var(--color-primary-soft);
+  color: var(--color-text-main);
 }
 
 .nav-link::after {
@@ -79,7 +72,7 @@ body {
   right: 10px;
   bottom: 4px;
   height: 2px;
-  background: #d4a373; 
+  background: var(--color-primary);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.2s ease-out;
@@ -89,29 +82,30 @@ body {
 }
 
 .nav-link.is-active {
-  background: rgba(212, 163, 115, 0.18);
-  color: #b87740; 
+  background: var(--color-primary-soft);
+  color: var(--color-primary-strong);
 }
 
 .btn-cta {
   display: inline-block;
   text-decoration: none;
   color: #fff;
-  background-color: #d4a373; 
+  background: var(--color-primary);
   font-weight: 600;
   padding: 9px 14px;
   border-radius: 999px;
   transition: all 0.2s ease;
-  box-shadow: 0 4px 10px rgba(180, 126, 60, 0.3);
+  box-shadow: 0 4px 10px var(--shadow-strong);
 }
 .btn-cta:hover {
-  background-color: #b87740; 
+  background: var(--color-primary-strong);
   transform: translateY(-1px);
 }
 
 .nav-toggle {
   display: none;
 }
+
 .nav-toggle-btn {
   display: none;
   width: 42px;
@@ -121,13 +115,14 @@ body {
   align-items: center;
   flex-direction: column;
   cursor: pointer;
-  background: rgba(0, 0, 0, 0.05);
+  background: var(--color-bg-soft);
   border: none;
 }
+
 .nav-toggle-btn .bar {
   width: 22px;
   height: 2px;
-  background: #1e293b;
+  background: var(--color-text-main);
   margin: 3px 0;
   border-radius: 2px;
   transition: transform 0.25s ease, opacity 0.25s ease;
@@ -147,33 +142,25 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 8px;
   background: transparent;
   border: none;
   cursor: pointer;
   font-size: 16px;
-  font-weight: 500;
-  padding: 8px;
   border-radius: 50%;
   transition: background 0.2s ease, transform 0.1s ease;
   position: relative;
 }
-
 .btn-logout:hover {
-  background: rgba(212, 163, 115, 0.15);
+  background: var(--color-primary-soft);
   transform: translateY(-1px);
 }
 
-.logout-icon {
-  display: block;
-  line-height: 1;
-}
-
-/* Tooltip */
 .btn-logout::after {
   content: attr(title);
   position: absolute;
   bottom: -30px;
-  background: #3f3a34;
+  background: var(--color-tooltip-bg);
   color: white;
   font-size: 0.65rem;
   padding: 3px 8px;
@@ -187,6 +174,15 @@ body {
 .btn-logout:hover::after {
   opacity: 1;
   transform: translateY(0);
+}
+
+.theme-toggle-btn {
+  margin-left: auto;
+  margin-right: 1rem;
+  border: none;
+  background: transparent;
+  font-size: 1.2rem;
+  cursor: pointer;
 }
 
 @media (max-width: 860px) {
@@ -203,14 +199,20 @@ body {
     display: grid;
     gap: 10px;
     padding: 16px;
-    background: rgba(255, 255, 255, 0.95);
+    background: var(--color-bg-surface);
     backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid var(--color-border-soft);
+    box-shadow: var(--shadow-strong);
     opacity: 0;
     pointer-events: none;
     transform: translateY(-10px);
     transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+
+  .nav-toggle:checked ~ .nav {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
   }
 
   .nav-list {
@@ -223,15 +225,9 @@ body {
     text-align: center;
   }
 
-  .nav-toggle:checked ~ .nav {
-    opacity: 1;
-    pointer-events: auto;
-    transform: translateY(0);
-  }
-
   .btn-logout {
     justify-self: start;
-    font-size: 1.4rem;
+    font-size: 1rem;
     padding: 10px;
   }
 

@@ -1,74 +1,111 @@
-import { HttpHandler, HttpRequest } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpHandler,
+  HttpRequest,
+  HttpEvent,
+  HttpInterceptor,
+} from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { Observable, tap } from 'rxjs';
 
+type Role = 'ADMIN' | 'USER' | null;
 
 @Injectable({ providedIn: 'root' })
-export class AuthService {
-  
-intercept(req: HttpRequest<any>, next: HttpHandler) {
-    const token = sessionStorage.getItem('jwt');
+export class AuthService implements HttpInterceptor {
 
-    if (!token) {
-      return next.handle(req);
+  private baseUrl = 'https://dioptrically-nonurban-elena.ngrok-free.dev/api/';
+  private role: Role = null;  // 👈 usato dalla direttiva
+
+  constructor(private http: HttpClient) {
+    // se ricarichi la pagina, recupero il ruolo salvato
+    const storedRole = sessionStorage.getItem('role') as Role;
+    if (storedRole === 'ADMIN' || storedRole === 'USER') {
+      this.role = storedRole;
     }
-
-    const cloned = req.clone({
-      setHeaders: { Authorization: 'Bearer ' + token }
-    });
-
-    return next.handle(cloned);
-  }  
-
-  private role: 'ADMIN' | 'USER' | null = null;
-
-  login(email: string, password: string) {
-    if (email.includes('admin')) {
-      this.role = 'ADMIN';
-    } else {
-      this.role = 'USER';
-    }
-
-    // finto token
-   sessionStorage.setItem('jwta', 'MOCK_TOKEN');
   }
 
-  getRole() {
+  // ---------------------------
+  //  INTERCEPTOR: aggiunge il token se esiste
+  // ---------------------------
+  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    const token = sessionStorage.getItem('jwt');
+
+    if (token) {
+      req = req.clone({
+        setHeaders: { Authorization: `Bearer ${token}` },
+      });
+    }
+
+    return next.handle(req);
+  }
+
+  // ---------------------------
+  //  LOGIN: chiama il backend, salva token + ruolo
+  // ---------------------------
+  login(email: string, password: string): Observable<{ token: string }> {
+    return this.http
+      .post<{ token: string }>(this.baseUrl + 'auth/login', { email, password })
+      .pipe(
+        tap((res) => {
+          // salvo il JWT
+          sessionStorage.setItem('jwt', res.token);
+
+          // decodifico il token per leggere il ruolo
+          const decoded = this.decodeToken(res.token);
+          const roleFromToken = decoded?.role as Role ?? null;
+
+          this.role = roleFromToken;
+          if (this.role) {
+            sessionStorage.setItem('role', this.role);
+          } else {
+            sessionStorage.removeItem('role');
+          }
+        })
+      );
+  }
+
+  // funzione di utilità per leggere il payload del JWT
+  private decodeToken(token: string): any {
+    try {
+      const payload = token.split('.')[1];
+      return JSON.parse(atob(payload));
+    } catch {
+      return null;
+    }
+  }
+
+  // ---------------------------
+  //  Esempio di chiamata autenticata
+  // ---------------------------
+  getUser(): Observable<any[]> {
+    return this.http.post<any[]>(this.baseUrl + 'user/all', {});
+  }
+
+  // ---------------------------
+  //  Metodi usati da guard / direttiva
+  // ---------------------------
+  isAuthenticated(): boolean {
+    return !!sessionStorage.getItem('jwt');
+  }
+
+  getRole(): Role {
     return this.role;
   }
 
-  isAdmin() {
+  isAdmin(): boolean {
     return this.role === 'ADMIN';
   }
 
-  isUser() {
+  isUser(): boolean {
     return this.role === 'USER';
   }
-  
+
+  // ---------------------------
+  //  LOGOUT
+  // ---------------------------
   logout(): void {
-  this.role = null;
-  sessionStorage.removeItem('jwt');
-}
-
-  
-  // private readonly validEmail = 'sinisicarlotta@gmail.com';
-  // private readonly validPassword = '12';
-
-  // isLogged = sessionStorage.getItem('isLoggedIn') === 'true';
-
-  // login(email: string, password: string): boolean {
-  //   const validCredentials = email === this.validEmail && password === this.validPassword;
-  //   this.isLogged = validCredentials;
-  //   sessionStorage.setItem('isLoggedIn', String(validCredentials));
-  //   return validCredentials;
-  // }
-
-  // logout(): void {
-  //   this.isLogged = false;
-  //   sessionStorage.removeItem('isLoggedIn');
-  // }
-
-  // get isAuthenticated(): boolean {
-  //   return this.isLogged;
-  // }
+    this.role = null;
+    sessionStorage.removeItem('jwt');
+    sessionStorage.removeItem('role');
+  }
 }

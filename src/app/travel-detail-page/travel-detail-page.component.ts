@@ -2,7 +2,7 @@ import { Component, inject, signal } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { firstValueFrom } from 'rxjs';
 import Swal from 'sweetalert2';
-import { Travel } from '../shared/travel.model';
+import { Travel } from '../shared/models/travel.model';
 import { TravelService } from '../shared/service/travel.service';
 import { NgClass } from '@angular/common';
 import { ToastService } from '../shared/toast.service';

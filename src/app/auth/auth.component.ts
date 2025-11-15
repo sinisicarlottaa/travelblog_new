@@ -38,21 +38,23 @@ export class AuthComponent {
   constructor(private authService: AuthService, private router: Router) {}
 
   onLogin() {
-    if (this.loginForm.invalid) {
+  if (this.loginForm.invalid) {
     this.error = 'Compila tutti i campi';
     return;
   }
 
-  const email = this.loginForm.value.email || '';
-  const password = this.loginForm.value.password || '';
+  const email = this.loginForm.value.email!;
+  const password = this.loginForm.value.password!;
 
-  this.authService.login(email, password);
+  this.authService.login(email, password).subscribe({
+    next: () => {
+      this.error = '';
+      this.router.navigate(['/home']);
+    },
+    error: () => {
+      this.error = 'Credenziali non valide';
+    }
+  });
+}
 
-  console.log('Ruolo:', this.authService.getRole()); 
-
-  this.isRegistered = true;
-  this.error = '';
-  
-  this.router.navigate(['/home']);
-  }
 }

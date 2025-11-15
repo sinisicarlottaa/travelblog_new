@@ -1,23 +1,58 @@
-// :root {
-//   --background-color: #{$color-light-background};
-//   --text-color: #{$color-light-text};
-// }
+.app-theme {
+  /* sfondi */
+  --color-bg-body: #f9f7f3; /* sfondo pagina */
+  --color-bg-surface: #ffffff; /* sfondo card/header */
+  --color-bg-soft: #f3f1ee; /* sfondo sezioni morbide (media, box) */
 
-// .dark-mode {
-//   --background-color: #{$color-dark-background};
-//   --text-color: #{$color-dark-text};
-// }
+  /* testo */
+  --color-text-main: #1e293b; /* testo principale */
+  --color-text-muted: #6b5e54; /* testo secondario */
+
+  --color-primary: #d4a373; /* bottone principale, underline, ecc. */
+  --color-primary-strong: #b87740; /* hover/dark varianti */
+  --color-primary-soft: rgba(212, 163, 115, 0.15); /* bg hover soft */
+
+  /* bordi / ombre */
+  --color-border-soft: rgba(0, 0, 0, 0.06);
+  --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.04);
+  --shadow-strong: 0 10px 20px rgba(0, 0, 0, 0.1);
+
+  /* overlay / tooltip */
+  --color-tooltip-bg: #3f3a34;
+}
+
+.app-theme.dark {
+  --color-bg-body: #020617;
+  --color-bg-body-lighter: #0c1649;
+  --color-bg-surface: #0f172a;
+  --color-bg-soft: #020617;
+
+  --color-text-main: #e5e7eb;
+  --color-text-muted: #cbd5f5;
+
+  --color-primary: #fbbf24;
+  --color-primary-strong: #f59e0b;
+  --color-primary-soft: rgba(148, 163, 184, 0.25);
+
+  --color-border-soft: rgba(148, 163, 184, 0.4);
+  --shadow-soft: 0 4px 20px rgba(15, 23, 42, 0.7);
+  --shadow-strong: 0 10px 20px rgba(15, 23, 42, 0.9);
+
+  --color-tooltip-bg: #0f172a;
+}
 
 body {
-   font-family: 'Poppins', Arial, sans-serif;
-   margin: 0;
-  padding: 0;
-   background: #f8fafc;
- }
-
-html, body {
+  font-family: 'Poppins', Arial, sans-serif;
   margin: 0;
   padding: 0;
-  overflow-x: hidden;
-  width: 100%;
+  background: var(--color-bg-body);
+  color: var(--color-text-main);
+}
+
+.app-theme {
+  --auth-bg-image: url('https://i.pinimg.com/1200x/6d/6a/6d/6d6a6dafab5aa47aee486f4bd88667a9.jpg');
+}
+
+.app-theme.dark {
+  --auth-bg-image: url('https://i.pinimg.com/1200x/ad/ee/69/adee69c24e972481f2204f05f94a956d.jpg');
 }

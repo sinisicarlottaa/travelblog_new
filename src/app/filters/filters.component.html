@@ -1,0 +1,54 @@
+<form [formGroup]="formFilter">
+<section>
+  <div class="search-container">
+    <nav class="navbar">
+      <div class="search-form" role="search">
+        <input type="text" placeholder="Cerca una destinazione" name="search" #searchInput formControlName="search" />
+      </div>
+    </nav>
+  </div>
+</section>
+
+<div class="filters-bar">
+  <div class="filter-control">
+    <label for="countryFilter">Paese</label>
+    <select id="countryFilter" #countrySelect formControlName="country">
+      <option value="">Tutti</option>
+      @for (country of countries(); track country) {
+      <option>{{ country }}</option>
+      }
+    </select>
+  </div>
+
+  <div class="filter-control">
+    <label for="yearFilter">Anno</label>
+    <select id="yearFilter" #yearSelect formControlName="year">
+      <option value=null>Tutti</option>
+      @for (year of years(); track year) {
+      <option>{{ year }}</option>
+      }
+    </select>
+  </div>
+
+  <div class="filter-control">
+    <label for="ratingFilter">Rating</label>
+    <select id="ratingFilter" #ratingSelect formControlName="rating">
+      <option value="">Tutti</option>
+      <option value="5">⭐ 5</option>
+      <option value="4.5">⭐ 4.5+</option>
+      <option value="4">⭐ 4+</option>
+      <option value="3.5">⭐ 3.5+</option>
+    </select>
+  </div>
+
+  <div class="filter-control">
+    <label for="userFilter">Utente</label>
+    <select id="userFilter" #userSelect formControlName="user">
+      <option value="">Tutti</option>
+      @for (user of users(); track user) {
+      <option>{{ user }}</option>
+      }
+    </select>
+  </div>
+</div>
+</form>

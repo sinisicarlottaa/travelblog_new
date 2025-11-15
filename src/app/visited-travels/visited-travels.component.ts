@@ -1,5 +1,5 @@
 import { Component, input } from '@angular/core';
-import { Travel } from '../shared/travel.model';
+import { Travel } from '../shared/models/travel.model';
 import { UpperCasePipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
 
@@ -11,5 +11,7 @@ import { RouterLink } from '@angular/router';
 })
 export class AllTravelsComponent {
   travel = input<Travel>();
+
+
 
 }

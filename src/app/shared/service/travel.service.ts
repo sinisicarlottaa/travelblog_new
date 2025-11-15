@@ -2,7 +2,8 @@ import { inject, Injectable, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { Travel } from '../travel.model';
+import { Travel } from '../models/travel.model';
+import { Filter } from '../models/filter.model';
 
 @Injectable({
   providedIn: 'root',
@@ -10,10 +11,21 @@ import { Travel } from '../travel.model';
 export class TravelService {
   private http = inject(HttpClient);
   private baseUrl: string = 'https://chiropodial-myron-nonphysical.ngrok-free.dev/api/travel/';
+  private baseUrlFilters: string = 'https://chiropodial-myron-nonphysical.ngrok-free.dev/api/';
 
-  // POST
-  public getTravels(): Observable<Travel[]> {
-    return this.http.post<Travel[]>(`${this.baseUrl}all/filters`, {});
+  // POST viaggi
+  public getTravels(val : Filter): Observable<Travel[]> {
+    return this.http.post<Travel[]>(`${this.baseUrl}all/filters`, val);
+  }
+
+  // // POST country
+  // public getContry(): Observable<string[]> {
+  //   return this.http.post<string[]>(`${this.baseUrlFilters}country/all`, {});
+  // }
+
+  // POST year
+  public getYear(): Observable<Travel[]> {
+    return this.http.post<Travel[]>(`${this.baseUrlFilters}years/all`, {});
   }
 
   // GET PER DETTAGLI BY ID
@@ -36,7 +48,7 @@ export class TravelService {
     return this.http.put<Travel>(`${this.baseUrl}update`, travel);
   }
 
-  loadUsers(): Observable<any[]> {
-    return this.http.get<any[]>('http://localhost:3000/');
-  }
+  // loadUsers(): Observable<any[]> {
+  //   return this.http.get<any[]>('http://localhost:3000/');
+  // }
 }

@@ -5,7 +5,7 @@ import { firstValueFrom } from 'rxjs';
 import Swal from 'sweetalert2';
 
 import { TravelService } from '../shared/service/travel.service';
-import { Travel } from '../shared/travel.model';
+import { Travel } from '../shared/models/travel.model';
 import { ToastService } from '../shared/toast.service';
 
 @Component({
@@ -118,6 +118,7 @@ export class NewTravelPageComponent implements OnInit {
       activities: value.activities,
       foods: foodArray,
       rating: value.rating ?? 0,
+      user: ''
     };
 
     this.isLoading = true;
