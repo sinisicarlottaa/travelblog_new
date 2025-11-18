@@ -3,9 +3,10 @@ import { AuthService } from '../auth/auth.service';
 
 @Directive({
   selector: '[appAuthDirective]',
+  standalone: true
 })
 export class AuthDirective {
-  role = input<string>();
+  role = input<string | null>(null, { alias: 'appAuthDirective' });
 
   constructor(
     private tpl: TemplateRef<any>,
@@ -14,10 +15,13 @@ export class AuthDirective {
   ) {}
 
   ngOnInit() {
-    const expectedRole = this.role(); 
+   const expectedRole = this.role(); 
     const currentRole = this.auth.getRole();
+    console.log('expectedRole:', expectedRole);
+    console.log('currentRole:', currentRole);
 
     if (currentRole === expectedRole) {
+      this.vcr.clear();
       this.vcr.createEmbeddedView(this.tpl);
     } else {
       this.vcr.clear();

@@ -7,12 +7,12 @@
 
   <div class="detail-actions">
     @if(travel()?.type === 'Y') {
-    <button class="back-btn" [routerLink]="'/visited-travels'">
+    <button class="back-btn" [routerLink]="'/home'">
       <span class="back-icon">←</span>
       <span>Torna ai viaggi</span>
     </button>
     }@else {
-    <button class="back-btn" [routerLink]="'/next-travels'">
+    <button class="back-btn" [routerLink]="'/home'">
       <span class="back-icon">←</span>
       <span>Torna ai viaggi</span>
     </button>

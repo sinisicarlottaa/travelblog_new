@@ -9,6 +9,7 @@ import {
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../shared/auth/auth.service';
 import { PasswordMatch } from '../shared/directives/password-match';
+import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-auth',
@@ -31,30 +32,75 @@ export class AuthComponent {
       validators: [Validators.required],
     }),
     confirmPassword: new FormControl('', {
-      nonNullable: true
+      nonNullable: true,
     }),
   });
 
   constructor(private authService: AuthService, private router: Router) {}
 
+  // async onLogin2() {
+  //   try {
+  //     console.log('init login');
+  //     if (this.loginForm.invalid) {
+  //       this.error = 'Compila tutti i campi';
+  //       return;
+  //     }
+
+  //     const username = this.loginForm.value.email || '';
+  //     const password = this.loginForm.value.password || '';
+
+  //     const risposta = await firstValueFrom(this.authService.login(username, password));
+
+  //     const token = risposta.token;
+  //     console.log('subscribe');
+  //     if (!token) {
+  //       this.error = 'Token non ricevuto dal server';
+  //       return;
+  //     }
+
+  //     sessionStorage.setItem('jwt', token);
+
+  //     this.isRegistered = true;
+  //     this.error = '';
+  //     this.router.navigate(['/home']);
+  //   } catch {
+  //     console.log('error');
+  //     this.error = 'Credenziali non valide';
+  //   } finally {
+
+  //   }
+  // }
+
   onLogin() {
-  if (this.loginForm.invalid) {
-    this.error = 'Compila tutti i campi';
-    return;
-  }
-
-  const email = this.loginForm.value.email!;
-  const password = this.loginForm.value.password!;
-
-  this.authService.login(email, password).subscribe({
-    next: () => {
-      this.error = '';
-      this.router.navigate(['/home']);
-    },
-    error: () => {
-      this.error = 'Credenziali non valide';
+    if (this.loginForm.invalid) {
+      this.error = 'Compila tutti i campi';
+      return;
     }
-  });
-}
 
+    const username = this.loginForm.value.email || '';
+    const password = this.loginForm.value.password || '';
+
+    this.authService.login(username, password).subscribe({
+      next: (response) => {
+        const token = response.jwt;
+        if (!token) {
+          this.error = 'Errore';
+          return;
+        }
+
+        sessionStorage.setItem('jwt', token);
+
+        const role = response.userDetails?.roles?.[0]?.role;
+        this.authService.setRole(role)
+
+        this.isRegistered = true;
+        this.error = '';
+        this.router.navigate(['/home']);
+      },
+      error: () => {
+        console.log('error');
+        this.error = 'Credenziali non valide';
+      },
+    });
+  }
 }

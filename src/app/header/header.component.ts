@@ -1,7 +1,6 @@
 import { Component, inject, input, OnInit } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../shared/auth/auth.service';
-import { ThemeComponent } from '../theme/theme.component';
 import { ThemeService } from '../shared/service/theme.service';
 import { Subscription } from 'rxjs';
 import { AuthDirective } from '../shared/directives/auth-directive';
@@ -20,7 +19,6 @@ export class HeaderComponent {
   isDarkMode = false;
   private sub?: Subscription;
   constructor(private themeService: ThemeService) {
-    // ci iscriviamo per sapere se il tema cambia
     this.sub = this.themeService.isDarkMode$.subscribe((isDark) => {
       this.isDarkMode = isDark;
     });
@@ -36,7 +34,7 @@ export class HeaderComponent {
 
   onLogOut() {
     this.authService.logout();
-    sessionStorage.clear(); // opzionale
+    sessionStorage.clear();
     this.router.navigate(['/']);
   }
 }

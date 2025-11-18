@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { AuthPageComponent } from './auth-page/auth-page.component';
 import { AuthGuard } from './shared/auth/auth.guard'; 
+import { Roles } from './shared/models/auth.model';
 
 export const routes: Routes = [
   {
@@ -39,6 +40,7 @@ export const routes: Routes = [
   {
     path: 'statistics',
     canActivate: [AuthGuard],
+    data: {role : Roles.ADMIN},
     loadComponent: () =>
       import('./statistics-page/statistics-page.component').then(
         (m) => m.StatisticsPageComponent

@@ -5,7 +5,7 @@ import Swal from 'sweetalert2';
 import { Travel } from '../shared/models/travel.model';
 import { TravelService } from '../shared/service/travel.service';
 import { NgClass } from '@angular/common';
-import { ToastService } from '../shared/toast.service';
+import { ToastService } from '../shared/service/toast.service';
 
 @Component({
   selector: 'app-travel-detail-page',
@@ -56,7 +56,7 @@ export class TravelDetailPageComponent {
   async onDelete() {
     const travel = this.travel();
     if (!travel) return;
-    const confirm: any = this.toastService.dialogDeleteElement();
+const confirm = await this.toastService.dialogDeleteElement();
 
     if (!confirm.isConfirmed) return;
 
@@ -66,7 +66,7 @@ export class TravelDetailPageComponent {
       await firstValueFrom(this.travelService.delete(travel.id));
       this.toastService.showToastSuccess('Viaggio rimosso con successo.');
 
-      this.router.navigate(['/visited-travels']);
+      this.router.navigate(['/home']);
     } catch (error) {
       console.error('Errore durante l’eliminazione:', error);
       this.toastService.dialogDeleteElement();

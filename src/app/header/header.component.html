@@ -16,7 +16,7 @@
 
     <nav class="nav">
       <ul class="nav-list">
-        @if (authService.isAuthenticated()) {
+        @if (authService.isAuthenticated) {
         <li>
           <a class="nav-link" [routerLink]="['/visited-mytravels']"><span>🧳 </span>Miei viaggi</a>
         </li>
@@ -29,10 +29,11 @@
           <a class="nav-link" [routerLink]="['/next-travels']"><span>💭 </span>Da vedere</a>
         </li>
         <li>
-          <a class="nav-link" [routerLink]="['/statistics']" *appAuthDirective="'ADMIN'"
+          <a *appAuthDirective="'ADMIN'" class="nav-link" [routerLink]="['/statistics']"
             ><span>📊 </span>Statistiche</a
           >
         </li>
+
         <li>
           <a class="btn-cta" [routerLink]="['/new-travel']">+ Nuovo viaggio</a>
         </li>
@@ -44,6 +45,9 @@
         }
       </ul>
 
+      <button type="button" class="theme-toggle-btn" aria-label="Cambia lingua">
+        <span>🇮🇹</span>
+      </button>
       <button
         type="button"
         class="theme-toggle-btn"

@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { inject, Injectable, signal } from '@angular/core';
+import { inject, Injectable, Pipe, signal } from '@angular/core';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -27,6 +27,10 @@ export class FilterService {
   public getUsers(): Observable<string[]> {
     return this.http.post<string[]>(`${this.baseUrlFilters}user/all`, {});
   }
+
+  // public getRatings(): Observable<string[]> {
+  //   return this.http.post<string[]>(`${this.baseUrlFilters}travel/all/filters`, {});
+  // }
 
 
 }

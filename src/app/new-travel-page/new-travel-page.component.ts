@@ -6,7 +6,7 @@ import Swal from 'sweetalert2';
 
 import { TravelService } from '../shared/service/travel.service';
 import { Travel } from '../shared/models/travel.model';
-import { ToastService } from '../shared/toast.service';
+import { ToastService } from '../shared/service/toast.service';
 
 @Component({
   selector: 'app-new-travel-page',

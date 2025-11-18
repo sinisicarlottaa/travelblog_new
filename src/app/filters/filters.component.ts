@@ -5,6 +5,7 @@ import { TravelService } from '../shared/service/travel.service';
 import { FormGroup, FormControl, ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { FilterService } from '../shared/service/filter.service';
 import { Filter } from '../shared/models/filter.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-filters',
@@ -29,12 +30,12 @@ export class FiltersComponent implements OnInit {
     user: new FormControl(''),
   });
 
-  constructor() {
+  constructor(public router: Router) {
     this.formFilter.valueChanges
       .pipe(debounceTime(300), distinctUntilChanged(), takeUntilDestroyed())
       .subscribe((val) => {
-      const filter = {...val, year : +val.year!};
-       this.onFilter.emit(filter as Filter);
+        const filter = { ...val, year: val.year ? +val.year! : null };
+        this.onFilter.emit(filter as Filter);
       });
   }
 
@@ -68,4 +69,8 @@ export class FiltersComponent implements OnInit {
     const users = await firstValueFrom(this.filterService.getUsers());
     this.users.set(users);
   }
+  // public async loadRating() {
+  //   const ratings = await firstValueFrom(this.filterService.getUsers());
+  //   this.ratings.set(ratings);
+  // }
 }

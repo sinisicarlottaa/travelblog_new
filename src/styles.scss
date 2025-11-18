@@ -1,10 +1,8 @@
 .app-theme {
-  /* sfondi */
-  --color-bg-body: #f9f7f3; /* sfondo pagina */
+  --color-bg-body: #f9f7f3; /* sfondo */
   --color-bg-surface: #ffffff; /* sfondo card/header */
   --color-bg-soft: #f3f1ee; /* sfondo sezioni morbide (media, box) */
 
-  /* testo */
   --color-text-main: #1e293b; /* testo principale */
   --color-text-muted: #6b5e54; /* testo secondario */
 
@@ -12,12 +10,10 @@
   --color-primary-strong: #b87740; /* hover/dark varianti */
   --color-primary-soft: rgba(212, 163, 115, 0.15); /* bg hover soft */
 
-  /* bordi / ombre */
   --color-border-soft: rgba(0, 0, 0, 0.06);
   --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.04);
   --shadow-strong: 0 10px 20px rgba(0, 0, 0, 0.1);
 
-  /* overlay / tooltip */
   --color-tooltip-bg: #3f3a34;
 }
 

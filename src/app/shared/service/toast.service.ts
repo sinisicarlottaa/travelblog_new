@@ -30,7 +30,7 @@ export class ToastService {
   }
 
   dialogDeleteElement() {
-    Swal.fire({
+   return Swal.fire({
       title: 'Sei sicuro?',
       text: 'Il viaggio verrà eliminato definitivamente!',
       icon: 'warning',
@@ -41,6 +41,4 @@ export class ToastService {
       cancelButtonText: 'Annulla',
     });
   }
-
-  
   }
