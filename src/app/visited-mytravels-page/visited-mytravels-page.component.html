@@ -1,17 +1,19 @@
-<section>
-  <app-filters (onFilter)="reload($event)" />
-</section>
+<div class="background">
+  <section>
+    <app-filters (onFilter)="reload($event)" />
+  </section>
 
-@if (loading()) {
-<p class="loading-text">Caricamento in corso...</p>
-} @else {
-<div class="travels-grid">
-  @for (travel of travels(); track travel.id) {
-  <app-visited-travels [travel]="travel"></app-visited-travels>
-  }@empty { @if(isFiltersActive()){
-  <p>Non ci sono viaggi caricati , Aggiungi un nuovo viaggio!</p>
-  }@else{
-  <p>Non ci sono viaggi caricati con questi filtri</p>
-  } }
+  @if (loading()) {
+  <p class="loading-text" style="color: #e2d2c2">Caricamento in corso...</p>
+  } @else {
+  <div class="travels-grid">
+    @for (travel of travels(); track travel.id) {
+    <app-visited-travels [travel]="travel"></app-visited-travels>
+    }@empty { @if(isFiltersActive()){
+    <p>Non ci sono viaggi caricati , Aggiungi un nuovo viaggio!</p>
+    }@else{
+    <p>Non ci sono viaggi caricati con questi filtri</p>
+    } }
+  </div>
+  }
 </div>
-}

@@ -1,7 +1,13 @@
+.background {
+  background-color: var(--color-bg-body-lighter);
+  height: 100vh;
+}
+
 .latest-destinations {
   padding: 30px 24px;
-  max-width: 1600px;
+  max-width: 1700px;
   margin: 0 auto;
+  height: 80vh;
   text-align: center;
   color: var(--color-text-main);
   background: var(--color-bg-body-lighter);
@@ -17,11 +23,22 @@
 .carousel {
   position: relative;
   display: flex;
+  gap: 20px;
   align-items: center;
   justify-content: center;
   overflow: hidden;
 }
 
+.loading-text,
+.empty-text,
+p {
+  padding-top: 200px;
+  margin-top: 0px;
+  text-align: center;
+  font-size: 1rem;
+  color: #6b5e54;
+  background-color: var(--color-bg-body-lighter);
+}
 // .cards {
 //   display: flex;
 //   gap: 10px;

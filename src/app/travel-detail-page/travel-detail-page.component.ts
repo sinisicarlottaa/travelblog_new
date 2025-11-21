@@ -56,7 +56,7 @@ export class TravelDetailPageComponent {
   async onDelete() {
     const travel = this.travel();
     if (!travel) return;
-const confirm = await this.toastService.dialogDeleteElement();
+    const confirm = await this.toastService.dialogDeleteElement();
 
     if (!confirm.isConfirmed) return;
 
@@ -65,7 +65,6 @@ const confirm = await this.toastService.dialogDeleteElement();
     try {
       await firstValueFrom(this.travelService.delete(travel.id));
       this.toastService.showToastSuccess('Viaggio rimosso con successo.');
-
       this.router.navigate(['/home']);
     } catch (error) {
       console.error('Errore durante l’eliminazione:', error);

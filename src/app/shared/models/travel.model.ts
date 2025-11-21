@@ -8,7 +8,7 @@ export interface Travel {
   description: string;
   highlights: string;
   activities: string;
-  foods: {
+  food: {
     dish: string;
     place: string;
   }[];

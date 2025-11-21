@@ -11,8 +11,6 @@ import { TravelService } from '../shared/service/travel.service';
   styleUrls: ['./card.component.scss'],
 })
 export class CardComponent {
-  // private travelService = inject(TravelService);
-
   travel = input<Travel>();
   travelOnClick = output<Travel>();
 }

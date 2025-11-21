@@ -31,7 +31,7 @@ export class NewTravelPageComponent implements OnInit {
       id: [Math.random().toString()],
       city: ['', { nonNullable: true, validators: [Validators.required] }],
       country: ['', { nonNullable: true, validators: [Validators.required] }],
-      year: [null, { validators: [Validators.required] }],
+      year: [null],
       type: ['Y', [Validators.required]],
       image: ['', { nonNullable: true, validators: [Validators.required] }],
       description: ['', { nonNullable: true, validators: [Validators.required] }],
@@ -41,7 +41,7 @@ export class NewTravelPageComponent implements OnInit {
         dish: ['', ],
         place: ['', ],
       }),
-      rating: [null, { validators: [Validators.required] }],
+      rating: [null],
     });
   }
 
@@ -61,7 +61,9 @@ export class NewTravelPageComponent implements OnInit {
     try {
       const travel = await firstValueFrom(this.travelService.getTravelById(editId));
 
-      const firstFood = travel.foods?.[0] ?? { dish: '', place: '' };
+      const firstFood = travel.food?.[0] ?? { dish: '', place: '' };
+      console.log(travel)
+      console.log(firstFood)
 
       this.formAddTravel.patchValue({
         id: travel.id,
@@ -82,7 +84,7 @@ export class NewTravelPageComponent implements OnInit {
     } catch (e) {
       console.error(e);
       this.toastService.showToastError('Impossibile caricare il viaggio da modificare.');
-      this.router.navigate(['/visited-travels']);
+      this.router.navigate(['/home']);
     } finally {
       this.isLoading = false;
     }
@@ -116,7 +118,7 @@ export class NewTravelPageComponent implements OnInit {
       description: value.description,
       highlights: value.highlights,
       activities: value.activities,
-      foods: foodArray,
+      food: foodArray,
       rating: value.rating ?? 0,
       user: ''
     };
@@ -133,7 +135,7 @@ export class NewTravelPageComponent implements OnInit {
       this.toastService.showToastSuccess(
         this.isEditMode ? 'Viaggio aggiornato!' : 'Viaggio aggiunto!'
       );
-      this.router.navigate(['/visited-travels']);
+      this.router.navigate(['/visited-alltravels']);
     } catch (error) {
       console.error('Errore salvataggio viaggio:', error);
 

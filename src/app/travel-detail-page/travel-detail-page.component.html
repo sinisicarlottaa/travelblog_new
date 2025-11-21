@@ -108,9 +108,9 @@
         <div class="detail-section food-section">
           <h2 class="section-title">Cibo provato</h2>
           <ul class="food-list">
-            @for (food of travel()!.foods; track food.dish) {
+            @for (food of travel()?.food; track food.dish) {
             <li class="food-item">
-              <div class="food-dish">{{ food.dish }}</div>
+              <div class="food-dish">ciao{{ food.dish }}</div>
               <div class="food-place">@ {{ food.place }}</div>
             </li>
             }

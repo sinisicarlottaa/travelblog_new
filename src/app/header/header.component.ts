@@ -17,14 +17,14 @@ export class HeaderComponent {
   path = input<string>();
 
   isDarkMode = false;
-  private sub?: Subscription;
+  public sub?: Subscription;
   constructor(private themeService: ThemeService) {
     this.sub = this.themeService.isDarkMode$.subscribe((isDark) => {
       this.isDarkMode = isDark;
     });
   }
 
-  gOnDestroy(): void {
+  ngOnDestroy(): void {
     this.sub?.unsubscribe();
   }
 

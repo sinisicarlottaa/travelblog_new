@@ -1,6 +1,8 @@
 .app-theme {
   --color-bg-body: #f9f7f3; /* sfondo */
   --color-bg-surface: #ffffff; /* sfondo card/header */
+  --color-bg-card: #fdf6ec; /* sfondo card/header */
+  --color-bg-card-bottom: #e7ddcf; /* sfondo card/header */
   --color-bg-soft: #f3f1ee; /* sfondo sezioni morbide (media, box) */
 
   --color-text-main: #1e293b; /* testo principale */
@@ -21,6 +23,8 @@
   --color-bg-body: #020617;
   --color-bg-body-lighter: #0c1649;
   --color-bg-surface: #0f172a;
+  --color-bg-card: #0c1649;
+  --color-bg-card-bottom: #070d2c;
   --color-bg-soft: #020617;
 
   --color-text-main: #e5e7eb;

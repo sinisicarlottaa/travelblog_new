@@ -18,11 +18,6 @@ export class TravelService {
     return this.http.post<Travel[]>(`${this.baseUrl}all/filters`, val);
   }
 
-  // // POST country
-  // public getContry(): Observable<string[]> {
-  //   return this.http.post<string[]>(`${this.baseUrlFilters}country/all`, {});
-  // }
-
   // POST year
   public getYear(): Observable<Travel[]> {
     return this.http.post<Travel[]>(`${this.baseUrlFilters}years/all`, {});
@@ -47,8 +42,4 @@ export class TravelService {
   update(travel: Travel) {
     return this.http.put<Travel>(`${this.baseUrl}update`, travel);
   }
-
-  // loadUsers(): Observable<any[]> {
-  //   return this.http.get<any[]>('http://localhost:3000/');
-  // }
 }

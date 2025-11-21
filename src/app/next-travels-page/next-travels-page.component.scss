@@ -1,14 +1,8 @@
-/* ===========================
-   VISITED PAGE
-=========================== */
-
 .visited-page {
   min-height: calc(100vh - 80px);
   padding: 28px 0 0;
   background: var(--color-bg-body-lighter);
 }
-
-/* Titolo + sottotitolo */
 
 .visited-title {
   max-width: 900px;
@@ -26,10 +20,6 @@
   color: var(--color-text-muted);
 }
 
-/* ===========================
-   GRID
-=========================== */
-
 .travels-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 450px));
@@ -40,17 +30,13 @@
   margin: 0 auto;
 }
 
-/* ===========================
-   PASSPORT CARD
-=========================== */
-
 .passport-entry {
   position: relative;
   width: 100%;
   max-width: 440px;
   border-radius: 18px;
   border: 2px solid var(--color-primary-strong);
-  background: var(--color-bg-soft);
+  background: var(--color-bg-card);
   height: 200px;
   box-shadow: var(--shadow-soft);
   overflow: hidden;
@@ -65,21 +51,13 @@
   box-shadow: var(--shadow-strong);
 }
 
-/* Pagina stile passaporto */
-
 .passport-page {
   display: grid;
   grid-template-columns: 110px 1fr;
   gap: 10px;
   padding: 14px 14px 8px;
-  background: repeating-linear-gradient(
-    var(--color-bg-soft),
-    var(--color-bg-soft) 26px,
-    var(--color-bg-body) 28px
-  );
+ background: var(--color-bg-card);
 }
-
-/* Foto */
 
 .passport-photo {
   width: 110px;
@@ -97,8 +75,6 @@
   object-fit: cover;
   filter: contrast(1.05) saturate(1.05);
 }
-
-/* Dati */
 
 .passport-data {
   display: flex;
@@ -125,42 +101,46 @@
   color: var(--color-text-muted);
 }
 
-.passport-fields {
-  margin: 6px 0 0;
-  padding: 0 10px;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 4px 10px;
+.passport-description {
+  margin-top: 0px;
   font-size: 0.8rem;
   color: var(--color-text-muted);
 }
 
-.passport-fields div {
-  display: flex;
-  flex-direction: column;
-}
+// .passport-fields {
+//   margin: 6px 0 0;
+//   padding: 0 10px;
+//   display: grid;
+//   grid-template-columns: repeat(2, minmax(0, 1fr));
+//   gap: 4px 10px;
+//   font-size: 0.8rem;
+//   color: var(--color-text-muted);
+// }
 
-.passport-fields dt {
-  text-transform: uppercase;
-  font-size: 0.65rem;
-  letter-spacing: 0.12em;
-  color: var(--color-text-muted);
-}
+// .passport-fields div {
+//   display: flex;
+//   flex-direction: column;
+// }
 
-.passport-fields dd {
-  margin: 0;
-  font-weight: 600;
-  color: var(--color-text-main);
-}
+// .passport-fields dt {
+//   text-transform: uppercase;
+//   font-size: 0.65rem;
+//   letter-spacing: 0.12em;
+//   color: var(--color-text-muted);
+// }
 
-/* MRZ (riga in basso tipo passaporto) */
+// .passport-fields dd {
+//   margin: 0;
+//   font-weight: 600;
+//   color: var(--color-text-main);
+// }
 
 .passport-mrz {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  background: var(--color-bg-body);
+  background: var(--color-bg-card-bottom);
   border-top: 1px solid var(--color-border-soft);
   padding: 6px 10px;
   font-family: 'Courier New', monospace;
@@ -172,8 +152,6 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
-
-/* Timbro */
 
 .passport-stamp {
   position: absolute;
@@ -215,22 +193,13 @@
   letter-spacing: 0.16em;
 }
 
-/* ===========================
-   EMPTY / LOADING TEXT
-=========================== */
-
-.visited-page .loading-text,
-.visited-page .empty-text,
-.visited-page p {
+.loading-text,
+.empty-text {
   margin-top: 100px;
   text-align: center;
   font-size: 1rem;
   color: var(--color-text-muted);
 }
-
-/* ===========================
-   RESPONSIVE
-=========================== */
 
 @media (max-width: 900px) {
   .travels-grid {

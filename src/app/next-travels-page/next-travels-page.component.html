@@ -1,13 +1,11 @@
 <div class="visited-page">
   @if (loading()) {
+  <p class="loading-text">Caricamento in corso...</p>
+  } @else {
   <h2 class="visited-title">
     I prossimi viaggi
     <span class="visited-subtitle"> La tua lista di destinazioni da esplorare. </span>
   </h2>
-
-  <p class="loading-text">Caricamento in corso...</p>
-  } @else {
-
   <div class="travels-grid">
     @for (travel of travels(); track travel.id) {
     <article class="passport-entry" [routerLink]="['/travel-detail', travel.id]">
@@ -19,17 +17,18 @@
         <div class="passport-data">
           <h3 class="passport-city">{{ travel.city }}</h3>
           <p class="passport-country">{{ travel.country }}</p>
+          <p class="passport-description">{{ travel.description }}</p>
 
-          <dl class="passport-fields">
+          <!-- <dl class="passport-fields">
             <div>
               <dt>Città</dt>
-              <dd>{{ travel.city }}</dd>
+              <dd style="color:red">{{ travel.city }}</dd>
             </div>
             <div>
               <dt>Paese</dt>
-              <dd>{{ travel.country }}</dd>
+              <dd style="color:red">{{ travel.country }}</dd>
             </div>
-          </dl>
+          </dl> -->
         </div>
       </div>
 
