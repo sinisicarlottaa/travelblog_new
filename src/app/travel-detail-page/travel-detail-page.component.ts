@@ -1,15 +1,15 @@
 import { Component, inject, signal } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { firstValueFrom } from 'rxjs';
-import Swal from 'sweetalert2';
 import { Travel } from '../shared/models/travel.model';
 import { TravelService } from '../shared/service/travel.service';
 import { NgClass } from '@angular/common';
 import { ToastService } from '../shared/service/toast.service';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-travel-detail-page',
-  imports: [RouterLink, NgClass],
+  imports: [RouterLink, NgClass, TranslatePipe],
   templateUrl: './travel-detail-page.component.html',
   styleUrl: './travel-detail-page.component.scss',
 })
@@ -22,6 +22,12 @@ export class TravelDetailPageComponent {
   travel = signal<Travel | null>(null);
   loading = signal(false);
   error = signal<string | null>(null);
+
+  constructor(private translateService: TranslateService) {}
+
+  get travelStatus(): string {
+    return this.travel()!.type === 'Y' ? 'DETAIL_PAGE.ALREADY_SEEN' : 'DETAIL_PAGE.TO_SEE';
+  }
 
   async ngOnInit(): Promise<void> {
     const id = this.route.snapshot.paramMap.get('travelId');
@@ -40,14 +46,14 @@ export class TravelDetailPageComponent {
       const found = await firstValueFrom(this.travelService.getTravelById(id));
 
       if (!found) {
-        this.error.set('Viaggio non trovato.');
+        this.error.set(this.translateService.instant('DETAIL_PAGE.ERROR_TRAVEL_NOT_FOUND'));
         return;
       }
 
       this.travel.set(found);
     } catch (e) {
       console.error(e);
-      this.error.set('Errore durante il caricamento del viaggio.');
+      this.error.set(this.translateService.instant('DETAIL_PAGE.ERROR_LOADING_TRAVEL'));
     } finally {
       this.loading.set(false);
     }

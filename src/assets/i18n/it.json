@@ -1,0 +1,112 @@
+{
+  "GENERAL": {
+    "LOADING": "Caricamento in corso..."
+  },
+  "HEADER": {
+    "MYTRAVELS": "Miei viaggi",
+    "ALLTRAVELS": "Tutti viaggi",
+    "NEXTTRAVELS": "Da vedere",
+    "STATISTICS": "Statistiche",
+    "NEWTRAVEL": "Nuovo viaggio"
+  },
+  "LOGIN": {
+    "MAIL_PLACEHOLDER": "Inserisci la mail",
+    "PASSWORD_PLACEHOLDER": "Inserisci la password",
+    "ERROR_FILL_ALL_FIELDS": "Compila tutti i campi",
+    "INVALID_CREADENTIALS": "Credenziali errate",
+    "ERROR": "Errore"
+  },
+  "HOME_PAGE": {
+    "TITLE": "Ultime destinazioni visitate",
+    "ERROR_LOADING_TRAVELS": "Errore nel caricamento die viaggi"
+  },
+  "CARD": {
+    "BUTTON": "Ottieni più info"
+  },
+  "DETAIL_PAGE": {
+    "GO_BACK": "Torna ai viaggi",
+    "EDIT_TRAVEL": "Modifica viaggio",
+    "DELETE_TRAVEL": "Cancella viaggio",
+    "ALREADY_SEEN": "Viaggio già vissuto",
+    "TO_SEE": "Viaggio da fare",
+    "DESCRIPTION": "Descrizione",
+    "LIKED_MOST": "Cosa mi è piaciuto di più",
+    "ACTIVITIES": "Attività",
+    "FOOD": "Cibo provato",
+    "ERROR_TRAVEL_NOT_FOUND": "Viaggio non trovato",
+    "ERROR_LOADING_TRAVEL": "Errore durante il caricamento del viaggio",
+    "ERROR_DELETING": "Errore durante l'eliminazione",
+    "ERROR": "Errore",
+    "SUCCESS_DELETING": "Viaggio rimosso con successo",
+    "SUCCESS": "Successo",
+    "DELETING": "Il viaggio verrà eliminato definitivamente!",
+    "SURE_DELETING": "Sicuro di voler eliminare il viaggio?",
+    "DELETE": "Si, elimina",
+    "CANCEL": "Annulla"
+  },
+  "FILTERS": {
+    "SEARCHBAR_PLACEHOLDER": "Cerca una destinazione",
+    "ALL": "Tutti",
+    "COUNTRY": "Paese",
+    "YEAR": "Anno",
+    "RATING": "Rating",
+    "USER": "Utente"
+  },
+  "GRAPHS": {
+    "TRAVELxYEARS": "Numero di viaggio per anno",
+    "COUNTRIES": "Paesi visitati",
+    "NUMBER_TRAVELS": "Numero di viaggi",
+    "VISITED_COUNTRIES": "Paesi visitati",
+    "TITLE": "Statistiche viaggi"
+  },
+  "VISITED_TRAVELS": {
+    "COUNTRY": "Paese",
+    "CITY": "Città",
+    "YEAR": "Year",
+    "RATING": "Rating"
+  },
+  "NEXT_TRAVELS": {
+    "TITLE": "I prossimi viaggi",
+    "SUBTITLE": "La tua lista di destinazioni da esplorare.",
+    "COUNTRY": "Paese",
+    "CITY": "Città",
+    "YEAR": "Anno",
+    "RATING": "Rating"
+  },
+  "NEW_TRAVEL": {
+    "TITLE": "Aggiungi un nuovo viaggio",
+    "SUBTITLE": "Aggiungi i dettagli di una nuova destinazione che hai visitato.",
+    "TITLE_M": "Modifica viaggio",
+    "SUBTITLE_M": "Aggiorna i dettagli della destinazione selezionata.",
+    "COUNTRY": "Paese",
+    "CITY": "Città",
+    "YEAR": "Anno",
+    "RATING": "Valutazione",
+    "TYPE": "Tipo di viaggio",
+    "URL": "URL Immagine",
+    "DESCRIPTION": "Descrizione",
+    "HIGHLIGHTS": "Cosa mi è piaciuto di più",
+    "ACTIVITIES": "Attività",
+    "FOOD_TITLE": "Piatti tradizionali",
+    "FOOD": "Cibo provato",
+    "PLACE": "Luogo in cui hai provato il cibo",
+    "COUNTRY_PLACEHOLDER": "Inserisci il Paese (es. Italia)",
+    "CITY_PLACEHOLDER": "Inserisci la città (es. Pisa)",
+    "YEAR_PLACEHOLDER": "Inserisci l'anno in cui hai viaggiato (es. 2024)",
+    "RATING_PLACEHOLDER": "Dai un voto (1-5 stelle)",
+    "TYPE_PLACEHOLDER": "Seleziona il tipo di viaggio",
+    "URL_PLACEHOLDER": "Incolla l'URL di un'immagine di copertina",
+    "DESCRIPTION_PLACEHOLDER": "Descrivi brevemente il luogo...",
+    "HIGHLIGHTS_PLACEHOLDER": "Elenca i punti salienti che ti sono piaciuti di più",
+    "ACTIVITIES_PLACEHOLDER": "Dettaglia le attività svolte (es. trekking, visite ai musei)",
+    "FOOD_PLACEHOLDER": "Quali piatti tipici o cibi hai provato?",
+    "PLACE_PLACEHOLDER": "Dove lo hai provato?",
+    "SAVE": "Salva",
+    "CANCEL": "Annulla",
+    "ERROR.CANNOT_LOAD_TRAVEL": "Impossibile caricare il viaggio da modificare",
+    "ERROR.CANNOT_UPDATE_TRAVEL": "Errore! Non è possibile modificare il viaggio",
+    "ERROR.CANNOT_ADD_TRAVEL": "Errore! Non è possibile aggiungere il viaggio",
+    "MESSAGE.TRAVEL_UPDATED": "Viaggio aggiornato",
+    "MESSAGE.TRAVEL_ADDED": "Viaggio aggiunto"
+  }
+}

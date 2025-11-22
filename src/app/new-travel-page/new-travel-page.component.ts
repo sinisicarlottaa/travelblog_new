@@ -2,16 +2,15 @@ import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { firstValueFrom } from 'rxjs';
-import Swal from 'sweetalert2';
-
 import { TravelService } from '../shared/service/travel.service';
 import { Travel } from '../shared/models/travel.model';
 import { ToastService } from '../shared/service/toast.service';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-new-travel-page',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, TranslatePipe],
   templateUrl: './new-travel-page.component.html',
   styleUrl: './new-travel-page.component.scss',
 })
@@ -26,7 +25,7 @@ export class NewTravelPageComponent implements OnInit {
 
   formAddTravel: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private translateService: TranslateService) {
     this.formAddTravel = this.fb.group({
       id: [Math.random().toString()],
       city: ['', { nonNullable: true, validators: [Validators.required] }],
@@ -38,8 +37,8 @@ export class NewTravelPageComponent implements OnInit {
       highlights: [''],
       activities: [''],
       food: this.fb.group({
-        dish: ['', ],
-        place: ['', ],
+        dish: [''],
+        place: [''],
       }),
       rating: [null],
     });
@@ -62,8 +61,8 @@ export class NewTravelPageComponent implements OnInit {
       const travel = await firstValueFrom(this.travelService.getTravelById(editId));
 
       const firstFood = travel.food?.[0] ?? { dish: '', place: '' };
-      console.log(travel)
-      console.log(firstFood)
+      console.log(travel);
+      console.log(firstFood);
 
       this.formAddTravel.patchValue({
         id: travel.id,
@@ -83,7 +82,7 @@ export class NewTravelPageComponent implements OnInit {
       });
     } catch (e) {
       console.error(e);
-      this.toastService.showToastError('Impossibile caricare il viaggio da modificare.');
+      this.toastService.showToastError(this.translateService.instant('ERROR.CANNOT_LOAD_TRAVEL'));
       this.router.navigate(['/home']);
     } finally {
       this.isLoading = false;
@@ -120,7 +119,7 @@ export class NewTravelPageComponent implements OnInit {
       activities: value.activities,
       food: foodArray,
       rating: value.rating ?? 0,
-      user: ''
+      user: '',
     };
 
     this.isLoading = true;
@@ -132,9 +131,9 @@ export class NewTravelPageComponent implements OnInit {
         await firstValueFrom(this.travelService.submit(travel));
       }
 
-      this.toastService.showToastSuccess(
+      /* this.toastService.showToastSuccess(
         this.isEditMode ? 'Viaggio aggiornato!' : 'Viaggio aggiunto!'
-      );
+      ); */
       this.router.navigate(['/visited-alltravels']);
     } catch (error) {
       console.error('Errore salvataggio viaggio:', error);

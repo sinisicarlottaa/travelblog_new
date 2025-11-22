@@ -18,24 +18,30 @@
       <ul class="nav-list">
         @if (authService.isAuthenticated) {
         <li>
-          <a class="nav-link" [routerLink]="['/visited-mytravels']"><span>🧳 </span>Miei viaggi</a>
-        </li>
-        <li>
-          <a class="nav-link" [routerLink]="['/visited-alltravels']"
-            ><span>🌍 </span>Tutti viaggi</a
+          <a class="nav-link" [routerLink]="['/visited-mytravels']"
+            ><span>🧳 </span>{{ 'HEADER.MYTRAVELS' | translate }}</a
           >
         </li>
         <li>
-          <a class="nav-link" [routerLink]="['/next-travels']"><span>💭 </span>Da vedere</a>
+          <a class="nav-link" [routerLink]="['/visited-alltravels']"
+            ><span>🌍 </span>{{ 'HEADER.ALLTRAVELS' | translate }}</a
+          >
+        </li>
+        <li>
+          <a class="nav-link" [routerLink]="['/next-travels']"
+            ><span>💭 </span>{{ 'HEADER.NEXTTRAVELS' | translate }}</a
+          >
         </li>
         <li>
           <a *appAuthDirective="'ADMIN'" class="nav-link" [routerLink]="['/statistics']"
-            ><span>📊 </span>Statistiche</a
+            ><span>📊 </span>{{ 'HEADER.STATISTICS' | translate }}</a
           >
         </li>
 
         <li>
-          <a class="btn-cta" [routerLink]="['/new-travel']">+ Nuovo viaggio</a>
+          <a class="btn-cta" [routerLink]="['/new-travel']"
+            >+ {{ 'HEADER.NEWTRAVEL' | translate }}</a
+          >
         </li>
 
         <button class="btn-logout" aria-label="Logout" title="Esci" (click)="onLogOut()">
@@ -45,8 +51,8 @@
         }
       </ul>
 
-      <button type="button" class="theme-toggle-btn" aria-label="Cambia lingua">
-        <span>🇮🇹</span>
+      <button (click)="toggleLanguage()" class="btn-lang-toggle">
+        {{ currentLang() === 'en' ? 'en' : 'it' }}
       </button>
       <button
         type="button"

@@ -7,7 +7,9 @@
     <h3>{{ travel()?.city }}</h3>
     <p>{{ travel()?.description }}</p>
     <div class="card-actions">
-      <a class="btn-info"  [routerLink]="['/travel-detail', travel()?.id]">Ottieni più info</a>
+      <a class="btn-info" [routerLink]="['/travel-detail', travel()?.id]">{{
+        'CARD.BUTTON' | translate
+      }}</a>
     </div>
   </div>
 </div>

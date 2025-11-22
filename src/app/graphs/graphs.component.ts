@@ -4,26 +4,27 @@ import { firstValueFrom, Subscription } from 'rxjs';
 import { Chart } from 'chart.js/auto';
 import { Filter } from '../shared/models/filter.model';
 import { ThemeService } from '../shared/service/theme.service';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-graphs',
   standalone: true,
-  imports: [],
+  imports: [TranslatePipe],
   templateUrl: './graphs.component.html',
   styleUrl: './graphs.component.scss',
 })
 export class GraphsComponent implements AfterViewInit {
   private travelService = inject(TravelService);
 
-  yearChart!: Chart;
-  countryChart!: Chart;
+  yearChart: Chart | null = null;
+  countryChart: Chart | null = null;
   @ViewChild('yearChartCanvas') yearChartCanvas!: ElementRef;
   @ViewChild('countryChartCanvas') countryChartCanvas!: ElementRef;
-  
+
   isDarkMode = false;
   public sub?: Subscription;
 
-  constructor(private themeService: ThemeService) {
+  constructor(private themeService: ThemeService, private translateService: TranslateService) {
     this.sub = this.themeService.isDarkMode$.subscribe((isDark) => {
       this.isDarkMode = isDark;
       this.updateCharts();
@@ -76,46 +77,46 @@ export class GraphsComponent implements AfterViewInit {
   ];
 
   darkPalette = [
-    // neutri chiari -> neutri scuri / toni di grigio caldo scuro
-    '#4a4440', // Corrisponde a #f2dfd3 (più scuro, grigio-marrone)
-    '#594e43', // Corrisponde a #e7c8a0
-    '#534d43', // Corrisponde a #d9bfa5
+    // neutrali chiari (per superfici + testi secondari)
+    '#cbb8a8',
+    '#b69e88',
+    '#a48b76',
 
-    // caldi / terracotta -> terracotta scuro / bordeaux
-    '#7a4d33', // Corrisponde a #d49867 (marrone-terracotta scuro)
-    '#80411a', // Corrisponde a #c77742 (arancio bruciato)
-    '#8a371c', // Corrisponde a #b55f2c
-    '#73331b', // Corrisponde a #9d4f28
+    // caldi / terracotta
+    '#d28556',
+    '#c06a34',
+    '#a85828',
+    '#8a4621',
 
-    // marroni + biscotto ben separati -> marroni scuri / seppia
-    '#6b543e', // Corrisponde a #c5a27a
-    '#5c4836', // Corrisponde a #a88462
-    '#4c3d2f', // Corrisponde a #8d6d4f
+    // marroni + biscotto ben separati
+    '#b99572',
+    '#9d7b5c',
+    '#82654a',
 
-    // arancio / ocra -> oro scuro / giallo senape bruciato
-    '#996417', // Corrisponde a #e49b2b
-    '#7a5000', // Corrisponde a #b67300
+    // arancio / ocra (accenti vivaci)
+    '#e7a53a',
+    '#c08000',
 
-    // verdi naturali (tono neutro) -> verdi foresta scuri
-    '#4d6943', // Corrisponde a #7ea86d
-    '#3c5e32', // Corrisponde a #5c8e4a
-    '#2a4b23', // Corrisponde a #3f7033
+    // verdi naturali (più luminosi del tuo tentativo precedente)
+    '#8bbc78',
+    '#6f9d58',
+    '#557b40',
 
-    // verdi acqua / turchesi soft -> turchesi scuri / verde petrolio
-    '#3d6761', // Corrisponde a #6aaea1
-    '#2f5f58', // Corrisponde a #4c9489
-    '#224b45', // Corrisponde a #317a6f
+    // verdi acqua / turchesi soft
+    '#7dbdb0',
+    '#5ca097',
+    '#417f75',
 
-    // blu polvere / blu profondi -> blu ardesia / blu notte scuri
-    '#4c5963', // Corrisponde a #8fa7b3
-    '#3c4953', // Corrisponde a #6f91a1
-    '#2f3c47', // Corrisponde a #4f7487
-    '#23313b', // Corrisponde a #355a6e
+    // blu polvere / blu profondi
+    '#99b3c2',
+    '#7c9aab',
+    '#607e91',
+    '#496273',
 
-    // violetti soft / desaturati -> viola prugna scuri
-    '#61526e', // Corrisponde a #b3a0c6
-    '#52435f', // Corrisponde a #947eb3
-    '#443853', // Corrisponde a #7b6499
+    // violetti soft / desaturati
+    '#c0aee0',
+    '#a287c9',
+    '#8a6fb0',
   ];
 
   async ngAfterViewInit() {
@@ -153,7 +154,7 @@ export class GraphsComponent implements AfterViewInit {
         labels: years,
         datasets: [
           {
-            label: 'Numero di viaggi',
+            label: this.translateService.instant('GRAPHS.NUMBER_TRAVELS'),
             data: valuesYear,
             backgroundColor: this.isDarkMode ? this.darkPalette : this.palette,
           },
@@ -171,7 +172,7 @@ export class GraphsComponent implements AfterViewInit {
         labels: countries,
         datasets: [
           {
-            label: 'Paesi visitati',
+            label: this.translateService.instant('GRAPHS.VISITED_COUNTRIES'),
             data: valuesCountry,
             backgroundColor: this.isDarkMode ? this.darkPalette : this.palette,
           },
@@ -188,6 +189,7 @@ export class GraphsComponent implements AfterViewInit {
               boxWidth: 14,
               boxHeight: 10,
               padding: 15,
+              color: '#b97f5aff',
             },
           },
         },
@@ -196,6 +198,9 @@ export class GraphsComponent implements AfterViewInit {
   }
 
   private updateCharts() {
+    if (!this.yearChart || !this.countryChart) {
+      return;
+    }
     const colors = this.isDarkMode ? this.darkPalette : this.palette;
 
     this.yearChart.data.datasets[0].backgroundColor = colors;

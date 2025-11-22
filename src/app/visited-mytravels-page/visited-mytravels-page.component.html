@@ -4,7 +4,7 @@
   </section>
 
   @if (loading()) {
-  <p class="loading-text" style="color: #e2d2c2">Caricamento in corso...</p>
+  <p class="loading-text" style="color: #e2d2c2">{{ 'GENERAL.LOADING' | translate }}</p>
   } @else {
   <div class="travels-grid">
     @for (travel of travels(); track travel.id) {

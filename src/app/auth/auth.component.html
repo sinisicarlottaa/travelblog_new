@@ -4,40 +4,44 @@
   </h2>
 
   @if (error) {
-    <p class="error-text">{{ error }}</p>
+  <p class="error-text">{{ error }}</p>
   }
 
   <form [formGroup]="loginForm" (ngSubmit)="onLogin()" class="login-form">
-    
     <label for="email">Email</label>
-    <input id="email" type="email" placeholder="Inserisci la mail" formControlName="email" />
+    <input
+      id="email"
+      type="email"
+      [placeholder]="'LOGIN.MAIL_PLACEHOLDER' | translate"
+      formControlName="email"
+    />
 
     @if (isRegistered) {
-      <!-- LOGIN -->
-      <label for="password">Password</label>
-      <input
-        id="password"
-        type="password"
-        placeholder="Inserisci la password"
-        formControlName="password"
-      />
+    <!-- LOGIN -->
+    <label for="password">Password</label>
+    <input
+      id="password"
+      type="password"
+      [placeholder]="'LOGIN.PASSWORD_PLACEHOLDER' | translate"
+      formControlName="password"
+    />
     } @else {
-      <!-- REGISTER -->
-      <label for="password">Password</label>
-      <input
-        id="password"
-        type="password"
-        placeholder="Inserisci la password"
-        formControlName="password"
-      />
+    <!-- REGISTER -->
+    <label for="password">Password</label>
+    <input
+      id="password"
+      type="password"
+      [placeholder]="'LOGIN.PASSWORD_PLACEHOLDER' | translate"
+      formControlName="password"
+    />
 
-      <label for="confirmPassword">Conferma password</label>
-      <input
-        id="confirmPassword"
-        type="password"
-        placeholder="Conferma la password"
-        formControlName="confirmPassword"
-      />
+    <label for="confirmPassword">Conferma password</label>
+    <input
+      id="confirmPassword"
+      type="password"
+      placeholder="Conferma la password"
+      formControlName="confirmPassword"
+    />
     }
 
     <div class="login-actions">
@@ -45,12 +49,12 @@
         {{ isRegistered ? 'Login' : 'Registrati' }}
       </button>
 
-      @if (isRegistered) {
-        <p class="register-text">
-          Non sei ancora registrato?
-          <a class="register-link" [routerLink]="'/register'">Registrati qui!</a>
-        </p>
-      }
+      <!-- @if (isRegistered) {
+      <p class="register-text">
+        Non sei ancora registrato?
+        <a class="register-link" [routerLink]="'/register'">Registrati qui!</a>
+      </p>
+      } -->
     </div>
   </form>
 </div>

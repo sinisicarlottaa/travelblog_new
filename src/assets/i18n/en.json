@@ -1,0 +1,108 @@
+{
+  "GENERAL": {
+    "LOADING": "Loading..."
+  },
+  "HEADER": {
+    "MYTRAVELS": "My travels",
+    "ALLTRAVELS": "All travels",
+    "NEXTTRAVELS": "Next to see",
+    "STATISTICS": "Statistics",
+    "NEWTRAVEL": "New travel"
+  },
+  "LOGIN": {
+    "MAIL_PLACEHOLDER": "Insert the mail",
+    "PASSWORD_PLACEHOLDER": "Insert the password",
+    "ERROR_FILL_ALL_FIELDS": "Fill all the fields",
+    "INVALID_CREADENTIALS": "Wrong credentials",
+    "ERROR": "Error"
+  },
+  "HOME_PAGE": {
+    "TITLE": "Last destinations visited",
+    "ERROR_LOADING_TRAVELS": "Error loading travels"
+  },
+  "CARD": {
+    "BUTTON": "More info"
+  },
+  "DETAIL_PAGE": {
+    "GO_BACK": "Go back to travels",
+    "EDIT_TRAVEL": "Edit travel",
+    "DELETE_TRAVEL": "Delete travel",
+    "ALREADY_SEEN": "Travel already seen",
+    "TO_SEE": "Not seen yet",
+    "DESCRIPTION": "Description",
+    "LIKED_MOST": "What I liked most",
+    "ACTIVITIES": "Activities",
+    "FOOD": "Tried food",
+    "ERROR_TRAVEL_NOT_FOUND": "Travel not found",
+    "ERROR_LOADING_TRAVEL": "Error loading the travel",
+    "ERROR_DELETING": "Error deleting the travel",
+    "ERROR": "Error",
+    "SUCCESS_DELETING": "Travel eliminated",
+    "SUCCESS": "Success",
+    "DELETING": "The trip will be permanently eliminated",
+    "SURE_DELETING": "Are you sure you want to eliminate the trip?",
+    "DELETE": "Yes, delete it",
+    "CANCEL": "Cancel"
+  },
+  "FILTERS": {
+    "SEARCHBAR_PLACEHOLDER": "Search a destination",
+    "ALL": "All",
+    "COUNTRY": "Country",
+    "YEAR": "Year",
+    "RATING": "Rating",
+    "USER": "User"
+  },
+  "GRAPHS": {
+    "TRAVELxYEARS": "Travel number by year",
+    "COUNTRIES": "Visited countries",
+    "NUMBER_TRAVELS": "Number of travels",
+    "VISITED_COUNTRIES": "Visited countries",
+    "TITLE": "Travel statistics"
+  },
+  "VISITED_TRAVELS": {
+    "COUNTRY": "Country",
+    "CITY": "City",
+    "YEAR": "Year",
+    "RATING": "Rating"
+  },
+  "NEXT_TRAVELS": {
+    "TITLE": "Next travels",
+    "SUBTITLE": "Your list of destinations to explore."
+  },
+  "NEW_TRAVEL": {
+    "TITLE": "Add a new trip",
+    "SUBTITLE": "Add details of a new destination you visited.",
+    "TITLE_M": "Edit trip",
+    "SUBTITLE_M": "Update the details of the selected destination.",
+    "COUNTRY": "Country",
+    "CITY": "City",
+    "YEAR": "Year",
+    "RATING": "Rating",
+    "TYPE": "Travel type",
+    "URL": "Image URL",
+    "DESCRIPTION": "Description",
+    "HIGHLIGHTS": "What I liked most",
+    "ACTIVITIES": "Activities",
+    "FOOD_TITLE": "Traditional dishes",
+    "FOOD": "Tried food",
+    "PLACE": "Place where you tried the food",
+    "COUNTRY_PLACEHOLDER": "Enter the country (e.g., Italy)",
+    "CITY_PLACEHOLDER": "Enter the city (e.g., Pisa)",
+    "YEAR_PLACEHOLDER": "Enter the year you traveled (e.g., 2024)",
+    "RATING_PLACEHOLDER": "Give a rating (1-5 stars)",
+    "TYPE_PLACEHOLDER": "Select the type of trip",
+    "URL_PLACEHOLDER": "Paste the URL of a cover image",
+    "DESCRIPTION_PLACEHOLDER": "Briefly describe the place...",
+    "HIGHLIGHTS_PLACEHOLDER": "List the highlights you liked most",
+    "ACTIVITIES_PLACEHOLDER": "Detail the activities performed (e.g., trekking, museum visits)",
+    "FOOD_PLACEHOLDER": "Which typical dishes or foods did you try?",
+    "PLACE_PLACEHOLDER": "Where did you try it?",
+    "SAVE": "Save",
+    "CANCEL": "Cancel",
+    "ERROR.CANNOT_LOAD_TRAVEL": "Unable to load trip to edit",
+    "ERROR.CANNOT_UPDATE_TRAVEL": "Error! Cannot update the travel",
+    "ERROR.CANNOT_ADD_TRAVEL": "Error! Cannot add the travel",
+    "MESSAGE.TRAVEL_UPDATED": "Travel updated",
+    "MESSAGE.TRAVEL_ADDED": "Travel added"
+  }
+}

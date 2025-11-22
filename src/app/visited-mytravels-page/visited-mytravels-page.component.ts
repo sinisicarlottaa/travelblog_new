@@ -8,10 +8,11 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FiltersComponent } from '../filters/filters.component';
 import { AllTravelsComponent } from '../visited-travels/visited-travels.component';
 import { Filter } from '../shared/models/filter.model';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-visited-mytravels-page',
-  imports: [AllTravelsComponent, FormsModule, FiltersComponent],
+  imports: [AllTravelsComponent, FormsModule, FiltersComponent, TranslatePipe],
   templateUrl: './visited-mytravels-page.component.html',
   styleUrl: './visited-mytravels-page.component.scss',
 })

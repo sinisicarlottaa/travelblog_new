@@ -10,11 +10,12 @@ import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../shared/auth/auth.service';
 import { PasswordMatch } from '../shared/directives/password-match';
 import { firstValueFrom } from 'rxjs';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-auth',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, FormsModule, RouterLink],
+  imports: [FormsModule, ReactiveFormsModule, FormsModule, RouterLink, TranslatePipe],
   templateUrl: './auth.component.html',
   styleUrl: './auth.component.scss',
 })
@@ -36,7 +37,11 @@ export class AuthComponent {
     }),
   });
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private translateService: TranslateService
+  ) {}
 
   // async onLogin2() {
   //   try {
@@ -73,7 +78,7 @@ export class AuthComponent {
 
   onLogin() {
     if (this.loginForm.invalid) {
-      this.error = 'Compila tutti i campi';
+      this.error = this.translateService.instant('ERROR_FILL_ALL_FIELDS');
       return;
     }
 
@@ -84,14 +89,14 @@ export class AuthComponent {
       next: (response) => {
         const token = response.jwt;
         if (!token) {
-          this.error = 'Errore';
+          this.error = this.translateService.instant('ERROR');
           return;
         }
 
         sessionStorage.setItem('jwt', token);
 
         const role = response.userDetails?.roles?.[0]?.role;
-        this.authService.setRole(role)
+        this.authService.setRole(role);
 
         this.isRegistered = true;
         this.error = '';
@@ -99,7 +104,7 @@ export class AuthComponent {
       },
       error: () => {
         console.log('error');
-        this.error = 'Credenziali non valide';
+        this.error = this.translateService.instant('INVALID_CREDENTIALS');
       },
     });
   }

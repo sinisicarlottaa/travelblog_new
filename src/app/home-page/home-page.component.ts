@@ -3,19 +3,21 @@ import { CardComponent } from '../card/card.component';
 import { TravelService } from '../shared/service/travel.service';
 import { Travel } from '../shared/models/travel.model';
 import { firstValueFrom } from 'rxjs';
-import { GraphsComponent } from "../graphs/graphs.component";
 import { Filter } from '../shared/models/filter.model';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-home',
-  imports: [CardComponent],
+  imports: [CardComponent, TranslatePipe],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.scss',
 })
 export class HomeComponent implements OnInit {
   private travelService = inject(TravelService);
 
-   filterActive = signal<Filter>({ country : '' , rating : '' , search : '' , user : '', year : null});
+  constructor(private translateService: TranslateService) {}
+
+  filterActive = signal<Filter>({ country: '', rating: '', search: '', user: '', year: null });
 
   ngOnInit(): void {
     this.getTravels();
@@ -35,6 +37,7 @@ export class HomeComponent implements OnInit {
       console.log(travels);
     } catch (e) {
       console.log('errore');
+      // Inserire errore nel caricamento dei viaggi ERROR_LOADING_TRAVELS
     } finally {
       this.loading.set(false);
     }

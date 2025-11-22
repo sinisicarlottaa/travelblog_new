@@ -1,4 +1,4 @@
-import { Component, computed, inject, OnInit, output, signal } from '@angular/core';
+import { Component, inject, OnInit, output, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { debounceTime, distinctUntilChanged, firstValueFrom, forkJoin } from 'rxjs';
 import { TravelService } from '../shared/service/travel.service';
@@ -6,10 +6,11 @@ import { FormGroup, FormControl, ReactiveFormsModule, FormsModule } from '@angul
 import { FilterService } from '../shared/service/filter.service';
 import { Filter } from '../shared/models/filter.model';
 import { Router } from '@angular/router';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-filters',
-  imports: [ReactiveFormsModule, FormsModule],
+  imports: [ReactiveFormsModule, FormsModule, TranslatePipe],
   templateUrl: './filters.component.html',
   styleUrl: './filters.component.scss',
 })
@@ -30,7 +31,7 @@ export class FiltersComponent implements OnInit {
     user: new FormControl(''),
   });
 
-  constructor(public router: Router) {
+  constructor(public router: Router, private translateService: TranslateService) {
     this.formFilter.valueChanges
       .pipe(debounceTime(300), distinctUntilChanged(), takeUntilDestroyed())
       .subscribe((val) => {

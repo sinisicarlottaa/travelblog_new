@@ -5,7 +5,7 @@
         <div class="search-form" role="search">
           <input
             type="text"
-            placeholder="Cerca una destinazione"
+            [placeholder]="'FILTERS.SEARCHBAR_PLACEHOLDER' | translate"
             name="search"
             #searchInput
             formControlName="search"
@@ -15,50 +15,50 @@
     </div>
   </section>
 
-<div class="search-container-filter">
-  <div class="filters-bar">
-    <div class="filter-control">
-      <label for="countryFilter">Paese</label>
-      <select id="countryFilter" #countrySelect formControlName="country">
-        <option value="">Tutti</option>
-        @for (country of countries(); track country) {
-        <option>{{ country }}</option>
-        }
-      </select>
-    </div>
+  <div class="search-container-filter">
+    <div class="filters-bar">
+      <div class="filter-control">
+        <label for="countryFilter">{{ 'FILTERS.COUNTRY' | translate }}</label>
+        <select id="countryFilter" #countrySelect formControlName="country">
+          <option value="">{{ 'FILTERS.ALL' | translate }}</option>
+          @for (country of countries(); track country) {
+          <option>{{ country }}</option>
+          }
+        </select>
+      </div>
 
-    <div class="filter-control">
-      <label for="yearFilter">Anno</label>
-      <select id="yearFilter" #yearSelect formControlName="year">
-        <option value="null">Tutti</option>
-        @for (year of years(); track year) {
-        <option>{{ year }}</option>
-        }
-      </select>
-    </div>
+      <div class="filter-control">
+        <label for="yearFilter">{{ 'FILTERS.YEAR' | translate }}</label>
+        <select id="yearFilter" #yearSelect formControlName="year">
+          <option value="null">{{ 'FILTERS.ALL' | translate }}</option>
+          @for (year of years(); track year) {
+          <option>{{ year }}</option>
+          }
+        </select>
+      </div>
 
-    <div class="filter-control">
-      <label for="ratingFilter">Rating</label>
-      <select id="ratingFilter" #ratingSelect formControlName="rating">
-        <option value="">Tutti</option>
-        <option value="5">⭐ 5</option>
-        <option value="4.5">⭐ 4.5+</option>
-        <option value="4">⭐ 4+</option>
-        <option value="3.5">⭐ 3.5+</option>
-      </select>
+      <div class="filter-control">
+        <label for="ratingFilter">{{ 'FILTERS.RATING' | translate }}</label>
+        <select id="ratingFilter" #ratingSelect formControlName="rating">
+          <option value="">{{ 'FILTERS.ALL' | translate }}</option>
+          <option value="5">⭐ 5</option>
+          <option value="4.5">⭐ 4.5+</option>
+          <option value="4">⭐ 4+</option>
+          <option value="3.5">⭐ 3.5+</option>
+        </select>
+      </div>
+
+      @if(router.url === '/visited-alltravels'){
+      <div class="filter-control">
+        <label for="userFilter">{{ 'FILTERS.USER' | translate }}</label>
+        <select id="userFilter" #userSelect formControlName="user">
+          <option value="">{{ 'FILTERS.ALL' | translate }}</option>
+          @for (user of users(); track user) {
+          <option>{{ user }}</option>
+          }
+        </select>
+      </div>
+      }
     </div>
-    
-    @if(router.url === '/visited-alltravels'){
-    <div class="filter-control">
-      <label for="userFilter">Utente</label>
-      <select id="userFilter" #userSelect formControlName="user">
-        <option value="">Tutti</option>
-        @for (user of users(); track user) {
-        <option>{{ user }}</option>
-        }
-      </select>
-    </div>
-    }
-  </div>
   </div>
 </form>

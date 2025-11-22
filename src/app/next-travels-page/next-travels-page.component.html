@@ -1,10 +1,10 @@
 <div class="visited-page">
   @if (loading()) {
-  <p class="loading-text">Caricamento in corso...</p>
+  <p class="loading-text">{{ 'GENERAL.LOADING' | translate }}</p>
   } @else {
   <h2 class="visited-title">
-    I prossimi viaggi
-    <span class="visited-subtitle"> La tua lista di destinazioni da esplorare. </span>
+    {{ 'NEXT_TRAVELS.TITLE' | translate }}
+    <span class="visited-subtitle"> {{ 'NEXT_TRAVELS.SUBTITLE' | translate }} </span>
   </h2>
   <div class="travels-grid">
     @for (travel of travels(); track travel.id) {

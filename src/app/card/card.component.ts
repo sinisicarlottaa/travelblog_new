@@ -1,12 +1,12 @@
 import { Component, computed, EventEmitter, inject, input, output, Output } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Travel } from '../shared/models/travel.model';
-import { TravelService } from '../shared/service/travel.service';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-card',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, TranslatePipe],
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss'],
 })

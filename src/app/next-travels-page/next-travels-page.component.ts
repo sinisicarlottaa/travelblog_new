@@ -5,17 +5,18 @@ import { TravelService } from '../shared/service/travel.service';
 import { RouterLink } from '@angular/router';
 import { UpperCasePipe } from '@angular/common';
 import { Filter } from '../shared/models/filter.model';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-next-travels-page',
-  imports: [RouterLink, UpperCasePipe],
+  imports: [RouterLink, UpperCasePipe, TranslatePipe],
   templateUrl: './next-travels-page.component.html',
   styleUrl: './next-travels-page.component.scss',
 })
 export class NextTravelsPageComponent {
   private travelService = inject(TravelService);
 
-   filterActive = signal<Filter>({ country : '' , rating : '' , search : '' , user : '', year : null});
+  filterActive = signal<Filter>({ country: '', rating: '', search: '', user: '', year: null });
 
   ngOnInit(): void {
     this.loadTravels();

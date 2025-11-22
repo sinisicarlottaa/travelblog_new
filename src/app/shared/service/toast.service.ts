@@ -1,19 +1,23 @@
 import { Injectable } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import Swal from 'sweetalert2';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ToastService {
-  showToastSuccess(successText : string = '') {
-     Swal.fire({
+  constructor(private translateService: TranslateService) {}
+
+  showToastSuccess(successText: string = '') {
+    Swal.fire({
       toast: true,
       position: 'top-end',
       showConfirmButton: false,
       timer: 3000,
       icon: 'success',
-      title: 'Successo', 
-      text: successText
+      title: 'Successo',
+      text: successText,
     });
   }
 
@@ -25,20 +29,20 @@ export class ToastService {
       timer: 3000,
       icon: 'error',
       title: 'Errore',
-      text: errorMessage
+      text: errorMessage,
     });
   }
 
   dialogDeleteElement() {
-   return Swal.fire({
-      title: 'Sei sicuro?',
-      text: 'Il viaggio verrà eliminato definitivamente!',
+    return Swal.fire({
+      title: this.translateService.instant('DETAIL_PAGE.SURE_DELETING'),
+      text: this.translateService.instant('DETAIL_PAGE.DELETING'),
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#d33',
       cancelButtonColor: '#3085d6',
-      confirmButtonText: 'Sì, elimina',
-      cancelButtonText: 'Annulla',
+      confirmButtonText: this.translateService.instant('DETAIL_PAGE.DELETE'),
+      cancelButtonText: this.translateService.instant('DETAIL_PAGE.CANCEL'),
     });
   }
-  }
+}

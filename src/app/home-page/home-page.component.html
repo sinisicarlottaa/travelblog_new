@@ -1,15 +1,15 @@
 <div class="background">
-@if (loading()) {
-<p class="loading-text" style="color: #e2d2c2">Caricamento in corso...</p>
-}@else {
-<section class="latest-destinations">
-  <h2 (click)="start.set(start() + 5)">🌎 Ultime destinazioni visitate</h2>
+  @if (loading()) {
+  <p class="loading-text" style="color: #e2d2c2">{{ 'GENERAL.LOADING' | translate }}</p>
+  }@else {
+  <section class="latest-destinations">
+    <h2 (click)="start.set(start() + 5)">🌎 {{ 'HOME_PAGE.TITLE' | translate }}</h2>
 
-  <div class="carousel">
-    @for (travel of travelsFiltered(); track travel.id ) {
-    <app-card [travel]="travel"></app-card>
-    }
-  </div>
-</section>
-}
+    <div class="carousel">
+      @for (travel of travelsFiltered(); track travel.id ) {
+      <app-card [travel]="travel"></app-card>
+      }
+    </div>
+  </section>
+  }
 </div>

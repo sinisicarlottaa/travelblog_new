@@ -1,6 +1,6 @@
 <div class="travel-detail-page">
   @if (loading()) {
-  <p class="loading-text">Caricamento in corso...</p>
+  <p class="loading-text">{{ 'GENERAL.LOADING' | translate }}</p>
   } @else if (error()) {
   <p class="error-text">{{ error() }}</p>
   } @else if (travel()) {
@@ -9,12 +9,12 @@
     @if(travel()?.type === 'Y') {
     <button class="back-btn" [routerLink]="'/home'">
       <span class="back-icon">←</span>
-      <span>Torna ai viaggi</span>
+      <span>{{ 'DETAIL_PAGE.GO_BACK' | translate }}</span>
     </button>
     }@else {
     <button class="back-btn" [routerLink]="'/home'">
       <span class="back-icon">←</span>
-      <span>Torna ai viaggi</span>
+      <span>{{ 'DETAIL_PAGE.GO_BACK' | translate }}</span>
     </button>
     }
 
@@ -26,12 +26,12 @@
         [queryParams]="{ editId: travel()!.id }"
       >
         <span class="edit-icon">✏️</span>
-        <span>Modifica viaggio</span>
+        <span>{{ 'DETAIL_PAGE.EDIT_TRAVEL' | translate }}</span>
       </button>
 
       <button class="delete-btn" type="button" (click)="onDelete()">
         <span class="delete-icon">🗑️</span>
-        <span>Elimina viaggio</span>
+        <span>{{ 'DETAIL_PAGE.DELETE_TRAVEL' | translate }}</span>
       </button>
     </div>
   </div>
@@ -56,7 +56,9 @@
           }"
         >
           🌍
-          {{ travel()!.type === 'Y' ? 'Viaggio già vissuto' : 'Viaggio da fare' }}
+          <p>
+            {{ travelStatus | translate }}
+          </p>
         </div>
 
         <h1 class="hero-title">{{ travel()!.city }}</h1>
@@ -79,7 +81,7 @@
     <div class="detail-layout">
       <div class="detail-main">
         <section class="detail-section">
-          <h2 class="section-title">Descrizione</h2>
+          <h2 class="section-title">{{ 'DETAIL_PAGE.DESCRIPTION' | translate }}</h2>
           <p class="section-text">
             {{ travel()!.description }}
           </p>
@@ -87,14 +89,14 @@
 
         @if(travel()?.type === 'Y') {
         <section class="detail-section">
-          <h2 class="section-title">Cosa mi è piaciuto di più</h2>
+          <h2 class="section-title">{{ 'DETAIL_PAGE.LIKED_MOST' | translate }}</h2>
           <p class="section-text">
             {{ travel()!.highlights }}
           </p>
         </section>
 
         <section class="detail-section">
-          <h2 class="section-title">Attività</h2>
+          <h2 class="section-title">{{ 'DETAIL_PAGE.ACTIVITIES' | translate }}</h2>
           <p class="section-text">
             {{ travel()!.activities }}
           </p>
@@ -106,11 +108,11 @@
         @if(travel()?.type === 'Y') {
 
         <div class="detail-section food-section">
-          <h2 class="section-title">Cibo provato</h2>
+          <h2 class="section-title">{{ 'DETAIL_PAGE.FOOD' | translate }}</h2>
           <ul class="food-list">
             @for (food of travel()?.food; track food.dish) {
             <li class="food-item">
-              <div class="food-dish">ciao{{ food.dish }}</div>
+              <div class="food-dish">{{ food.dish }}</div>
               <div class="food-place">@ {{ food.place }}</div>
             </li>
             }
