@@ -15,7 +15,7 @@ import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-auth',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, FormsModule, RouterLink, TranslatePipe],
+  imports: [FormsModule, ReactiveFormsModule, FormsModule, TranslatePipe],
   templateUrl: './auth.component.html',
   styleUrl: './auth.component.scss',
 })
@@ -78,7 +78,7 @@ export class AuthComponent {
 
   onLogin() {
     if (this.loginForm.invalid) {
-      this.error = this.translateService.instant('ERROR_FILL_ALL_FIELDS');
+      this.error = this.translateService.instant('LOGIN.ERROR_FILL_ALL_FIELDS')!;
       return;
     }
 
@@ -89,7 +89,7 @@ export class AuthComponent {
       next: (response) => {
         const token = response.jwt;
         if (!token) {
-          this.error = this.translateService.instant('ERROR');
+          this.error = this.translateService.instant('LOGIN.ERROR')!;
           return;
         }
 
@@ -104,7 +104,7 @@ export class AuthComponent {
       },
       error: () => {
         console.log('error');
-        this.error = this.translateService.instant('INVALID_CREDENTIALS');
+        this.error = this.translateService.instant('LOGIN.INVALID_CREDENTIALS')!;
       },
     });
   }

@@ -131,6 +131,11 @@ export class NewTravelPageComponent implements OnInit {
         await firstValueFrom(this.travelService.submit(travel));
       }
 
+      this.toastService.showToastSuccess(
+        this.isEditMode
+          ? this.translateService.instant('NEW_TRAVEL.MESSAGE.TRAVEL_UPDATED')!
+          : this.translateService.instant('NEW_TRAVEL.MESSAGE.TRAVEL_ADDED')!
+      );
       /* this.toastService.showToastSuccess(
         this.isEditMode ? 'Viaggio aggiornato!' : 'Viaggio aggiunto!'
       ); */
@@ -140,8 +145,8 @@ export class NewTravelPageComponent implements OnInit {
 
       this.toastService.showToastError(
         this.isEditMode
-          ? 'Impossibile aggiornare il viaggio.'
-          : 'Impossibile aggiungere il viaggio.'
+          ? this.translateService.instant('NEW_TRAVEL.ERROR.CANNOT_UPDATE_TRAVEL')!
+          : this.translateService.instant('NEW_TRAVEL.ERROR.CANNOT_ADD_TRAVEL')!
       );
     } finally {
       this.isLoading = false;

@@ -10,8 +10,10 @@ import { Filter } from '../models/filter.model';
 })
 export class TravelService {
   private http = inject(HttpClient);
-  private baseUrl: string = 'https://chiropodial-myron-nonphysical.ngrok-free.dev/api/travel/';
-  private baseUrlFilters: string = 'https://chiropodial-myron-nonphysical.ngrok-free.dev/api/';
+  // private baseUrl: string = 'https://chiropodial-myron-nonphysical.ngrok-free.dev/api/travel/';
+  // private baseUrlFilters: string = 'https://chiropodial-myron-nonphysical.ngrok-free.dev/api/';
+  private baseUrl: string = 'https://gentlewomanly-eun-ruminantly.ngrok-free.dev/api/travel/';
+  private baseUrlFilters: string = 'https://gentlewomanly-eun-ruminantly.ngrok-free.dev/api/';
 
   // POST viaggi
   public getTravels(val : Filter): Observable<Travel[]> {

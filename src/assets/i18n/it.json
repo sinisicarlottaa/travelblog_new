@@ -13,7 +13,7 @@
     "MAIL_PLACEHOLDER": "Inserisci la mail",
     "PASSWORD_PLACEHOLDER": "Inserisci la password",
     "ERROR_FILL_ALL_FIELDS": "Compila tutti i campi",
-    "INVALID_CREADENTIALS": "Credenziali errate",
+    "INVALID_CREDENTIALS": "Credenziali errate",
     "ERROR": "Errore"
   },
   "HOME_PAGE": {

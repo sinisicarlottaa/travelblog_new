@@ -16,7 +16,7 @@ export class ToastService {
       showConfirmButton: false,
       timer: 3000,
       icon: 'success',
-      title: 'Successo',
+      title: this.translateService.instant('DETAIL_PAGE.SUCCESS'),
       text: successText,
     });
   }
@@ -28,7 +28,7 @@ export class ToastService {
       showConfirmButton: false,
       timer: 3000,
       icon: 'error',
-      title: 'Errore',
+      title: this.translateService.instant('DETAIL_PAGE.ERROR'),
       text: errorMessage,
     });
   }
