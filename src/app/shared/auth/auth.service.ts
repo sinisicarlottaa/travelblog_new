@@ -2,7 +2,7 @@ import { HttpClient, HttpHandler, HttpRequest } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Login, Roles } from '../models/auth.model';
+import { Login, Register, Roles, User } from '../models/auth.model';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -14,10 +14,24 @@ export class AuthService {
     return this.http.post<Login>(`${this.baseUrl}user/all`, {});
   }
 
+  // POST user administration
+  public getUserAdministration(): Observable<User> {
+    return this.http.post<User>(`${this.baseUrl}user/find_all_strict`, {});
+  }
+
+  // POST user
+  // public register(): Observable<Register> {
+  //   return this.http.post<Register>(`${this.baseUrl}user/register`, {});
+  // }
+
   public role: Roles | null = null;
 
   login(username: string, password: string): Observable<Login> {
     return this.http.post<Login>(`${this.baseUrl}login`, { username, password });
+  }
+
+  register(email: string, username: string, password: string, confirmPassword: string): Observable<Register> {
+    return this.http.post<Register>(`${this.baseUrl}user/register`, {email, username, password, confirmPassword });
   }
 
   setRole(role: Roles) {
@@ -33,14 +47,6 @@ export class AuthService {
     }
     return this.role;
   }
-
-  // isAdmin() {
-  //   return this.role === 'ADMIN';
-  // }
-
-  // isUser() {
-  //   return this.role === 'USER';
-  // }
 
   get isAuthenticated(): boolean {
     return !!sessionStorage.getItem('jwt');

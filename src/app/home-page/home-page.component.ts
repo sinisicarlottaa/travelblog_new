@@ -33,7 +33,8 @@ export class HomeComponent implements OnInit {
     try {
       this.loading.set(true);
       const travels = await firstValueFrom(this.travelService.getTravels(this.filterActive()));
-      this.travels.set(travels);
+      const travel2 = travels.filter((t) => t.type === 'Y')
+      this.travels.set(travel2);
       console.log(travels);
     } catch (e) {
       console.log('errore');

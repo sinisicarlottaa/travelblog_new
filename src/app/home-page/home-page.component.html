@@ -3,8 +3,8 @@
   <p class="loading-text" style="color: #e2d2c2">{{ 'GENERAL.LOADING' | translate }}</p>
   }@else {
   <section class="latest-destinations">
-    <h2 (click)="start.set(start() + 5)">🌎 {{ 'HOME_PAGE.TITLE' | translate }}</h2>
-
+    <h2>🌎 {{ 'HOME_PAGE.TITLE' | translate }}</h2>
+    <!-- (click)="start.set(start() + 5)" -->
     <div class="carousel">
       @for (travel of travelsFiltered(); track travel.id ) {
       <app-card [travel]="travel"></app-card>

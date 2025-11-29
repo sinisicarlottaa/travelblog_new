@@ -12,5 +12,5 @@ import { TranslatePipe } from '@ngx-translate/core';
 })
 export class CardComponent {
   travel = input<Travel>();
-  travelOnClick = output<Travel>();
+  // travelOnClick = output<Travel>();
 }

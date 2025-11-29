@@ -44,7 +44,7 @@ export class VisitedMyTravelsPageComponent {
   public async loadTravels(val?: Filter) {
     try {
       this.loading.set(true);
-      const travels = await firstValueFrom(this.travelService.getTravels(this.filterActive()));
+      const travels = await firstValueFrom(this.travelService.getMyTravels(this.filterActive()));
       this.travels.set(travels);
       console.log('Travels:', travels);
     } catch (e) {

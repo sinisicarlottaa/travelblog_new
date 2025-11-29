@@ -1,13 +1,14 @@
 <div class="login-container">
   <h2 class="login-title">
-    {{ isRegistered ? 'Login' : 'Register' }}
+    {{ isRegistered ? 'Login' : 'Registrazione' }}
   </h2>
 
   @if (error) {
   <p class="error-text">{{ error }}</p>
   }
 
-  <form [formGroup]="loginForm" (ngSubmit)="onLogin()" class="login-form">
+  <form [formGroup]="loginForm"  (ngSubmit)="isRegistered ? onLogin() : onRegister()" class="login-form">
+    @if (!isRegistered) {
     <label for="email">Email</label>
     <input
       id="email"
@@ -15,17 +16,15 @@
       [placeholder]="'LOGIN.MAIL_PLACEHOLDER' | translate"
       formControlName="email"
     />
-
-    @if (isRegistered) {
-    <!-- LOGIN -->
-    <label for="password">Password</label>
+    }
+    <label for="username">Username</label>
     <input
-      id="password"
-      type="password"
-      [placeholder]="'LOGIN.PASSWORD_PLACEHOLDER' | translate"
-      formControlName="password"
+      id="username"
+      type="username"
+      [placeholder]="'LOGIN.USERNAME_PLACEHOLDER' | translate"
+      formControlName="username"
     />
-    } @else {
+
     <!-- REGISTER -->
     <label for="password">Password</label>
     <input
@@ -35,6 +34,7 @@
       formControlName="password"
     />
 
+    @if (!isRegistered) {
     <label for="confirmPassword">Conferma password</label>
     <input
       id="confirmPassword"
@@ -49,12 +49,17 @@
         {{ isRegistered ? 'Login' : 'Registrati' }}
       </button>
 
-      <!-- @if (isRegistered) {
+      @if (isRegistered) {
       <p class="register-text">
         Non sei ancora registrato?
-        <a class="register-link" [routerLink]="'/register'">Registrati qui!</a>
+        <a class="register-link" (click)="isRegistered = false">Registrati qui!</a>
       </p>
-      } -->
+      }@else {
+        <p class="register-text">
+        Sei già registrato?
+        <a class="register-link" (click)="isRegistered = true">Accedi!</a>
+      </p>
+      }
     </div>
   </form>
 </div>

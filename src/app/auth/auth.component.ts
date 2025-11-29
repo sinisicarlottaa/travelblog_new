@@ -9,7 +9,6 @@ import {
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../shared/auth/auth.service';
 import { PasswordMatch } from '../shared/directives/password-match';
-import { firstValueFrom } from 'rxjs';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 
 @Component({
@@ -25,6 +24,9 @@ export class AuthComponent {
 
   loginForm = new FormGroup({
     email: new FormControl('', {
+      nonNullable: true,
+    }),
+    username: new FormControl('', {
       nonNullable: true,
       validators: [Validators.required],
     }),
@@ -76,13 +78,14 @@ export class AuthComponent {
   //   }
   // }
 
+
   onLogin() {
     if (this.loginForm.invalid) {
       this.error = this.translateService.instant('LOGIN.ERROR_FILL_ALL_FIELDS')!;
       return;
     }
 
-    const username = this.loginForm.value.email || '';
+    const username = this.loginForm.value.username || '';
     const password = this.loginForm.value.password || '';
 
     this.authService.login(username, password).subscribe({
@@ -105,6 +108,30 @@ export class AuthComponent {
       error: () => {
         console.log('error');
         this.error = this.translateService.instant('LOGIN.INVALID_CREDENTIALS')!;
+      },
+    });
+  }
+
+  onRegister() {
+    if (this.loginForm.invalid) {
+      this.error = this.translateService.instant('LOGIN.ERROR_FILL_ALL_FIELDS')!;
+      return;
+    }
+
+    const username = this.loginForm.value.username || '';
+    const email = this.loginForm.value.email || '';
+    const password = this.loginForm.value.password || '';
+    const confirmPassword = this.loginForm.value.confirmPassword || '';
+
+    this.authService.register(email, username, password, confirmPassword).subscribe({
+      next: () => {
+        this.isRegistered = true;
+        this.error = '';
+        this.router.navigate(['/']);
+      },
+      error: () => {
+        console.log('error');
+        this.error = this.translateService.instant('LOGIN.ERROR_REGISTER')!;
       },
     });
   }

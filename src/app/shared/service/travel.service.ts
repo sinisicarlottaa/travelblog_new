@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 
 import { Travel } from '../models/travel.model';
 import { Filter } from '../models/filter.model';
+import { Stats } from '../models/stats.model';
 
 @Injectable({
   providedIn: 'root',
@@ -19,13 +20,25 @@ export class TravelService {
   public getTravels(val : Filter): Observable<Travel[]> {
     return this.http.post<Travel[]>(`${this.baseUrl}all/filters`, val);
   }
+  // POST statistics
+  public getStatsCountry(val : Filter): Observable<Stats[]> {
+    return this.http.post<Stats[]>(`${this.baseUrlFilters}country/stats`, val);
+  }
+  public getStatsYears(val : Filter): Observable<Stats[]> {
+    return this.http.post<Stats[]>(`${this.baseUrlFilters}years/stats`, val);
+  }
+
+  // POST mytravels
+  public getMyTravels(val : Filter): Observable<Travel[]> {
+    return this.http.post<Travel[]>(`${this.baseUrl}myTravel/filters`, val);
+  }
 
   // POST year
   public getYear(): Observable<Travel[]> {
     return this.http.post<Travel[]>(`${this.baseUrlFilters}years/all`, {});
   }
 
-  // GET PER DETTAGLI BY ID
+  // GET PER DETTAGLI BY ID 
   public getTravelById(id: string): Observable<Travel> {
     return this.http.post<Travel>(`${this.baseUrl}${id}`, undefined);
   }

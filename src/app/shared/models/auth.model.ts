@@ -15,3 +15,15 @@ export enum Roles {
   ADMIN = 'ADMIN',
   USER = 'USER',
 }
+
+export interface Register {
+  username: string;
+  email: string;
+  password: string;
+}
+export interface User {
+  id: string;
+  username: string;
+  email: string;
+  role: Roles;
+}

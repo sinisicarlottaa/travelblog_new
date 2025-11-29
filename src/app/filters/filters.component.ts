@@ -70,8 +70,4 @@ export class FiltersComponent implements OnInit {
     const users = await firstValueFrom(this.filterService.getUsers());
     this.users.set(users);
   }
-  // public async loadRating() {
-  //   const ratings = await firstValueFrom(this.filterService.getUsers());
-  //   this.ratings.set(ratings);
-  // }
 }

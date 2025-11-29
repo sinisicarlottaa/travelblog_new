@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class FilterService {
   private http = inject(HttpClient);
-  private baseUrlFilters: string = 'https://chiropodial-myron-nonphysical.ngrok-free.dev/api/';
+  private baseUrlFilters: string = 'https://gentlewomanly-eun-ruminantly.ngrok-free.dev/api/';
 
   selectedRaiting = signal<string>('');
   selectedYear = signal<string>('');
@@ -27,10 +27,4 @@ export class FilterService {
   public getUsers(): Observable<string[]> {
     return this.http.post<string[]>(`${this.baseUrlFilters}user/all`, {});
   }
-
-  // public getRatings(): Observable<string[]> {
-  //   return this.http.post<string[]>(`${this.baseUrlFilters}travel/all/filters`, {});
-  // }
-
-
 }

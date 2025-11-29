@@ -1,5 +1,5 @@
 import { Component, inject, input, OnInit, signal } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { AuthService } from '../shared/auth/auth.service';
 import { ThemeService } from '../shared/service/theme.service';
 import { Subscription } from 'rxjs';
@@ -8,7 +8,7 @@ import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-header',
-  imports: [RouterLink, AuthDirective, TranslatePipe],
+  imports: [RouterLink, AuthDirective, TranslatePipe, RouterLinkActive],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })

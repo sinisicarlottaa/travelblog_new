@@ -10,9 +10,9 @@
     @for (travel of travels(); track travel.id) {
     <app-visited-travels [travel]="travel"></app-visited-travels>
     }@empty { @if(isFiltersActive()){
-    <p>Non ci sono viaggi caricati , Aggiungi un nuovo viaggio!</p>
-    }@else{
     <p>Non ci sono viaggi caricati con questi filtri</p>
+    }@else{
+    <p>Non ci sono viaggi caricati, aggiungi un nuovo viaggio!</p>
     } }
   </div>
   }

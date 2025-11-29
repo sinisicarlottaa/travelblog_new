@@ -121,41 +121,45 @@ export class GraphsComponent implements AfterViewInit {
 
   async ngAfterViewInit() {
     // viaggi
-    const travels = await firstValueFrom(this.travelService.getTravels(this.filterActive()));
+    const travelsCountry = await firstValueFrom(
+      this.travelService.getStatsCountry(this.filterActive())
+    );
+    const travelsYear = await firstValueFrom(this.travelService.getStatsYears(this.filterActive()));
 
     // filtra
-    const visitedYear = travels.filter((t) => t.type === 'Y' && t.year);
-    const visitedCountry = travels.filter((t) => t.country);
+    // const visitedYear = travelsYear.filter((t) => t.year);
+    // const visitedCountry = travelsCountry.filter((t) => t.country);
 
     // conteggio per anno
-    const countsYear: Record<string, number> = {};
-    visitedYear.forEach((travel) => {
-      const year = String(travel.year);
-      countsYear[year] = (countsYear[year] ?? 0) + 1;
-    });
+    // const countsYear: Record<string, number> = {};
+    // travelsYear.forEach((travel) => {
+    //   // const year = String(travel.year);
+    //   // countsYear[year] = (countsYear[year] ?? 0) + 1;
+    // });
 
-    const countsCountry: Record<string, number> = {};
-    visitedCountry.forEach((travel) => {
-      const country = travel.country;
-      countsCountry[country] = (countsCountry[country] ?? 0) + 1;
-    });
+    // const countsCountry: Record<string, number> = {};
+    // travelsCountry.forEach((travel) => {
+    //   // const country = travel.country;
+    //   // countsCountry[country] = (countsCountry[country] ?? 0) + 1;
+    // });
 
-    const years = Object.keys(countsYear).sort();
-    const valuesYear = years.map((y) => countsYear[y]);
+    // const years = Object.keys(countsYear).sort();
+    // const valuesYear = years.map((y) => countsYear[y]);
 
-    const countries = Object.keys(countsCountry).sort(
-      (a, b) => countsCountry[b] - countsCountry[a]
-    );
-    const valuesCountry = countries.map((c) => countsCountry[c]);
+    // const countries = Object.keys(countsCountry).sort(
+    //   (a, b) => countsCountry[b] - countsCountry[a]
+    // );
+    // const valuesCountry = countries.map((c) => countsCountry[c]);
+    const countries =  travelsCountry.map((el) => el.u).sort((a, b) => b-a)
 
     this.yearChart = new Chart(this.yearChartCanvas.nativeElement, {
       type: 'bar',
       data: {
-        labels: years,
+        labels: travelsYear.map((el) => el.t),
         datasets: [
           {
             label: this.translateService.instant('GRAPHS.NUMBER_TRAVELS'),
-            data: valuesYear,
+            data: travelsYear.map((el) => el.u),
             backgroundColor: this.isDarkMode ? this.darkPalette : this.palette,
           },
         ],
@@ -169,11 +173,11 @@ export class GraphsComponent implements AfterViewInit {
     this.countryChart = new Chart(this.countryChartCanvas.nativeElement, {
       type: 'pie',
       data: {
-        labels: countries,
+        labels: travelsCountry.map((el) => el.t),
         datasets: [
           {
             label: this.translateService.instant('GRAPHS.VISITED_COUNTRIES'),
-            data: valuesCountry,
+            data: countries,
             backgroundColor: this.isDarkMode ? this.darkPalette : this.palette,
           },
         ],
