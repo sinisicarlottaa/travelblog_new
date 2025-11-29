@@ -7,13 +7,16 @@
     "ALLTRAVELS": "All travels",
     "NEXTTRAVELS": "Next to see",
     "STATISTICS": "Statistics",
+    "USERS": "Administration",
     "NEWTRAVEL": "New travel"
   },
   "LOGIN": {
     "MAIL_PLACEHOLDER": "Insert the mail",
+    "USERNAME_PLACEHOLDER": "Insert the username",
     "PASSWORD_PLACEHOLDER": "Insert the password",
     "ERROR_FILL_ALL_FIELDS": "Fill all the fields",
     "INVALID_CREDENTIALS": "Wrong credentials",
+    "ERROR_REGISTER": "Error! Try again",
     "ERROR": "Error"
   },
   "HOME_PAGE": {
@@ -104,5 +107,14 @@
     "ERROR.CANNOT_ADD_TRAVEL": "Error! Cannot add the travel",
     "MESSAGE.TRAVEL_UPDATED": "Travel updated",
     "MESSAGE.TRAVEL_ADDED": "Travel added"
+  },
+  "USERS_PAGE": {
+    "TITLE": "Registered users",
+    "SUBTITLE": "User management page",
+    "DELETE": "Delete"
+  },
+  "PROFILE_PAGE": {
+    "TITLE": "Profile",
+    "SUBTITLE": "User informations"
   }
 }

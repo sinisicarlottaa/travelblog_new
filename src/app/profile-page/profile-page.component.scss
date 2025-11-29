@@ -1,0 +1,30 @@
+.visited-page {
+  min-height: calc(100vh - 80px);
+  padding: 28px 0 0;
+  background: var(--color-bg-body-lighter);
+}
+
+.visited-title {
+  max-width: 900px;
+  margin: 0 auto 20px;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--color-text-main);
+}
+
+.visited-title span.visited-subtitle {
+  display: block;
+  margin-top: 4px;
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: var(--color-text-muted);
+}
+
+.loading-text,
+.empty-text {
+  margin-top: 100px;
+  text-align: center;
+  font-size: 1rem;
+  color: var(--color-text-muted);
+}
+

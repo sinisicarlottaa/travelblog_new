@@ -1,0 +1,13 @@
+<div class="visited-page">
+  <h2 class="visited-title">
+    {{ 'USERS_PAGE.TITLE' | translate }}
+    <span class="visited-subtitle"> {{ 'USERS_PAGE.SUBTITLE' | translate }} </span>
+  </h2>
+
+  @if (loading()) {
+  <p class="loading-text">{{ 'GENERAL.LOADING' | translate }}</p>
+  } @else { 
+    @for (user of users(); track user ) {
+  <app-user [user]="user" ></app-user>
+  } }
+</div>

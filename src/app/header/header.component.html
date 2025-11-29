@@ -18,42 +18,138 @@
       <ul class="nav-list">
         @if (authService.isAuthenticated) {
         <li>
-          <a class="nav-link" [routerLink]="['/visited-mytravels']"
-            ><span>🧳 </span>{{ 'HEADER.MYTRAVELS' | translate }}</a
+          <a class="nav-link" routerLink="/visited-mytravels" routerLinkActive="active">
+            <span>🧳 </span>{{ 'HEADER.MYTRAVELS' | translate }}</a
           >
         </li>
         <li>
-          <a class="nav-link" [routerLink]="['/visited-alltravels']"
+          <a class="nav-link" [routerLink]="['/visited-alltravels']" routerLinkActive="active"
             ><span>🌍 </span>{{ 'HEADER.ALLTRAVELS' | translate }}</a
           >
         </li>
         <li>
-          <a class="nav-link" [routerLink]="['/next-travels']"
+          <a class="nav-link" [routerLink]="['/next-travels']" routerLinkActive="active"
             ><span>💭 </span>{{ 'HEADER.NEXTTRAVELS' | translate }}</a
           >
         </li>
         <li>
-          <a *appAuthDirective="'ADMIN'" class="nav-link" [routerLink]="['/statistics']"
+          <a
+            *appAuthDirective="'ADMIN'"
+            class="nav-link"
+            [routerLink]="['/statistics']"
+            routerLinkActive="active"
             ><span>📊 </span>{{ 'HEADER.STATISTICS' | translate }}</a
           >
         </li>
-
         <li>
-          <a class="btn-cta" [routerLink]="['/new-travel']"
+          <a
+            *appAuthDirective="'ADMIN'"
+            class="nav-link"
+            [routerLink]="['/users']"
+            routerLinkActive="active"
+            ><span>⚙️ </span>{{ 'HEADER.USERS' | translate }}</a
+          >
+        </li>
+        <li>
+          <a class="btn-cta" [routerLink]="['/new-travel']" routerLinkActive="active"
             >+ {{ 'HEADER.NEWTRAVEL' | translate }}</a
           >
         </li>
 
-        <button class="btn-logout" aria-label="Logout" title="Esci" (click)="onLogOut()">
-          <a class="nav-link"><span>🚪 </span>Logout</a>
-        </button>
-
+        <div class="profile">
+          <button class="btn-profile" aria-label="Profilo" title="Profilo"  [routerLink]="['/profile']" >
+            <a class="nav-link">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                fill="currentColor"
+                class="bi bi-person-fill"
+                viewBox="0 0 16 16"
+                style="color: #d4a373"
+              >
+                <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
+              </svg>
+            </a>
+          </button>
+          <button class="btn-logout" aria-label="Logout" title="Esci" (click)="onLogOut()">
+            <a class="nav-link">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="30"
+                height="30"
+                fill="currentColor"
+                class="bi bi-door-open-fill"
+                viewBox="0 0 16 16"
+                style="color: #d4a373"
+              >
+                <path
+                  d="M1.5 15a.5.5 0 0 0 0 1h13a.5.5 0 0 0 0-1H13V2.5A1.5 1.5 0 0 0 11.5 1H11V.5a.5.5 0 0 0-.57-.495l-7 1A.5.5 0 0 0 3 1.5V15zM11 2h.5a.5.5 0 0 1 .5.5V15h-1zm-2.5 8c-.276 0-.5-.448-.5-1s.224-1 .5-1 .5.448.5 1-.224 1-.5 1"
+                />
+              </svg>
+            </a>
+          </button>
+        </div>
         }
       </ul>
 
-      <button (click)="toggleLanguage()" class="btn-lang-toggle">
-        {{ currentLang() === 'en' ? 'en' : 'it' }}
-      </button>
+      <a
+        (click)="toggleLanguage()"
+        class="btn-lang-toggle"
+        [title]="currentLang() === 'en' ? 'English' : 'Italiano'"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          x="0px"
+          y="0px"
+          width="30"
+          height="30"
+          viewBox="0,0,256,256"
+          style="margin-right: 5px"
+        >
+          <g
+            fill="none"
+            fill-rule="nonzero"
+            stroke="none"
+            stroke-width="1"
+            stroke-linecap="butt"
+            stroke-linejoin="miter"
+            stroke-miterlimit="10"
+            stroke-dasharray=""
+            stroke-dashoffset="0"
+            font-family="none"
+            font-weight="none"
+            font-size="none"
+            text-anchor="none"
+            style="mix-blend-mode: normal"
+          >
+            <g transform="scale(5.33333,5.33333)">
+              <path
+                d="M15,13h25c1.104,0 2,0.896 2,2v25c0,1.104 -0.896,2 -2,2h-14z"
+                fill="#e1d7c0"
+              ></path>
+              <path
+                d="M26.832,34.854l-0.916,-1.776l0.889,-0.459c0.061,-0.031 6.101,-3.208 9.043,-9.104l0.446,-0.895l1.79,0.893l-0.447,0.895c-3.241,6.496 -9.645,9.85 -9.916,9.989z"
+                fill="#9bb3be"
+              ></path>
+              <path
+                d="M38.019,34l-0.87,-0.49c-0.207,-0.116 -5.092,-2.901 -8.496,-7.667l1.627,-1.162c3.139,4.394 7.805,7.061 7.851,7.087l0.869,0.492zM26,22h14v2h-14z"
+                fill="#9bb3be"
+              ></path>
+              <path d="M32,20h2v4h-2z" fill="#9bb3be"></path>
+              <path
+                d="M33,35h-25c-1.104,0 -2,-0.896 -2,-2v-25c0,-1.104 0.896,-2 2,-2h14z"
+                fill="#d4a373"
+              ></path>
+              <path d="M26,42l-3,-7h10z" fill="#8d6640"></path>
+              <path
+                d="M19.172,24h-4.36l-1.008,3h-2.804l4.764,-13h2.444l4.792,13h-2.805zM15.444,22h3.101l-1.559,-4.714z"
+                fill="#ffffff"
+              ></path>
+            </g>
+          </g>
+        </svg>
+      </a>
       <button
         type="button"
         class="theme-toggle-btn"
@@ -62,8 +158,52 @@
         aria-label="Cambia tema"
       >
         @if(!isDarkMode){
-        <span>🌞</span>
-        }@else { <span>🌙</span>}
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          x="0px"
+          y="0px"
+          width="30"
+          height="30"
+          viewBox="0,0,256,256"
+        >
+          <g
+            fill="#e4b011"
+            fill-rule="nonzero"
+            stroke="none"
+            stroke-width="1"
+            stroke-linecap="butt"
+            stroke-linejoin="miter"
+            stroke-miterlimit="10"
+            stroke-dasharray=""
+            stroke-dashoffset="0"
+            font-family="none"
+            font-weight="none"
+            font-size="none"
+            text-anchor="none"
+            style="mix-blend-mode: normal"
+          >
+            <g transform="scale(8.53333,8.53333)">
+              <path
+                d="M14.98438,0.98633c-0.55152,0.00862 -0.99193,0.46214 -0.98437,1.01367v3c-0.0051,0.36064 0.18438,0.69608 0.49587,0.87789c0.3115,0.18181 0.69676,0.18181 1.00825,0c0.3115,-0.18181 0.50097,-0.51725 0.49587,-0.87789v-3c0.0037,-0.2703 -0.10218,-0.53059 -0.29351,-0.72155c-0.19133,-0.19097 -0.45182,-0.29634 -0.72212,-0.29212zM5.79688,4.79883c-0.40657,0.0009 -0.77213,0.24784 -0.92475,0.62467c-0.15262,0.37684 -0.06192,0.80856 0.22944,1.09212l2.12109,2.12109c0.25082,0.26123 0.62326,0.36646 0.9737,0.2751c0.35044,-0.09136 0.62411,-0.36503 0.71546,-0.71546c0.09136,-0.35044 -0.01387,-0.72288 -0.2751,-0.9737l-2.12109,-2.12109c-0.18874,-0.19402 -0.44807,-0.30325 -0.71875,-0.30273zM24.17188,4.79883c-0.2598,0.00774 -0.50638,0.11632 -0.6875,0.30273l-2.12109,2.12109c-0.26123,0.25082 -0.36645,0.62326 -0.2751,0.9737c0.09136,0.35043 0.36503,0.6241 0.71546,0.71546c0.35043,0.09136 0.72288,-0.01387 0.9737,-0.2751l2.12109,-2.12109c0.29576,-0.28749 0.38469,-0.72707 0.22393,-1.10691c-0.16075,-0.37985 -0.53821,-0.62204 -0.9505,-0.60988zM15,8c-3.86599,0 -7,3.13401 -7,7c0,3.86599 3.13401,7 7,7c3.86599,0 7,-3.13401 7,-7c0,-3.86599 -3.13401,-7 -7,-7zM2,14c-0.36064,-0.0051 -0.69608,0.18438 -0.87789,0.49587c-0.18181,0.3115 -0.18181,0.69676 0,1.00825c0.18181,0.3115 0.51725,0.50097 0.87789,0.49587h3c0.36064,0.0051 0.69608,-0.18438 0.87789,-0.49587c0.18181,-0.3115 0.18181,-0.69676 0,-1.00825c-0.18181,-0.3115 -0.51725,-0.50097 -0.87789,-0.49587zM25,14c-0.36064,-0.0051 -0.69608,0.18438 -0.87789,0.49587c-0.18181,0.3115 -0.18181,0.69676 0,1.00825c0.18181,0.3115 0.51725,0.50097 0.87789,0.49587h3c0.36064,0.0051 0.69608,-0.18438 0.87789,-0.49587c0.18181,-0.3115 0.18181,-0.69676 0,-1.00825c-0.18181,-0.3115 -0.51725,-0.50097 -0.87789,-0.49587zM7.91016,21.06055c-0.2598,0.00774 -0.50638,0.11632 -0.6875,0.30273l-2.12109,2.12109c-0.26123,0.25082 -0.36646,0.62326 -0.2751,0.9737c0.09136,0.35044 0.36503,0.6241 0.71546,0.71546c0.35044,0.09136 0.72288,-0.01387 0.9737,-0.2751l2.12109,-2.12109c0.29576,-0.28749 0.38469,-0.72707 0.22393,-1.10691c-0.16075,-0.37985 -0.53821,-0.62204 -0.9505,-0.60988zM22.06055,21.06055c-0.40692,0.00011 -0.77321,0.24676 -0.92633,0.62377c-0.15312,0.37701 -0.06255,0.80922 0.22907,1.09303l2.12109,2.12109c0.25082,0.26123 0.62326,0.36645 0.9737,0.27509c0.35043,-0.09136 0.6241,-0.36502 0.71546,-0.71546c0.09136,-0.35043 -0.01386,-0.72288 -0.27509,-0.9737l-2.12109,-2.12109c-0.18827,-0.19353 -0.4468,-0.30272 -0.7168,-0.30273zM14.98438,23.98633c-0.55152,0.00862 -0.99193,0.46214 -0.98437,1.01367v3c-0.0051,0.36064 0.18438,0.69608 0.49587,0.87789c0.3115,0.18181 0.69676,0.18181 1.00825,0c0.3115,-0.18181 0.50097,-0.51725 0.49587,-0.87789v-3c0.0037,-0.2703 -0.10218,-0.53059 -0.29351,-0.72155c-0.19133,-0.19097 -0.45182,-0.29634 -0.72212,-0.29212z"
+              ></path>
+            </g>
+          </g>
+        </svg>
+        }@else {
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="23"
+          height="23"
+          fill="currentColor"
+          class="bi bi-moon"
+          viewBox="0 0 16 16"
+          style="color: white"
+        >
+          <path
+            d="M6 .278a.77.77 0 0 1 .08.858 7.2 7.2 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277q.792-.001 1.533-.16a.79.79 0 0 1 .81.316.73.73 0 0 1-.031.893A8.35 8.35 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.75.75 0 0 1 6 .278M4.858 1.311A7.27 7.27 0 0 0 1.025 7.71c0 4.02 3.279 7.276 7.319 7.276a7.32 7.32 0 0 0 5.205-2.162q-.506.063-1.029.063c-4.61 0-8.343-3.714-8.343-8.29 0-1.167.242-2.278.681-3.286"
+          />
+        </svg>
+        }
       </button>
     </nav>
   </div>

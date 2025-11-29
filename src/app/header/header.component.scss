@@ -10,7 +10,7 @@
 }
 
 .header-inner {
-  max-width: 1400px;
+  max-width: 1800px;
   margin: 0 auto;
   padding: 14px 24px;
   display: flex;
@@ -37,7 +37,7 @@
 .nav {
   display: flex;
   align-items: center;
-  gap: 10px;
+  // gap: 10px;
 }
 
 .nav-list {
@@ -79,6 +79,11 @@
 }
 .nav-link:hover::after {
   transform: scaleX(1);
+}
+
+.active {
+  font-weight: 700;
+  color: var(--color-primary-strong);
 }
 
 .nav-link.is-active {
@@ -138,6 +143,29 @@
   transform: translateY(-7px) rotate(-45deg);
 }
 
+.profile {
+  display: flex;
+  gap: 0px;
+  padding: auto 0px;
+  margin-right: 10px;
+}
+
+.btn-profile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 50%;
+  // transition: background 0.2s ease, transform 0.1s ease;
+  position: relative;
+  justify-self: start;
+  font-size: 1rem;
+  padding: 0px;
+  margin-left: 15px;
+}
 .btn-logout {
   display: flex;
   align-items: center;
@@ -147,13 +175,11 @@
   border: none;
   cursor: pointer;
   font-size: 16px;
-  border-radius: 50%;
-  transition: background 0.2s ease, transform 0.1s ease;
+
+  // transition: background 0.2s ease, transform 0.1s ease;
   position: relative;
-}
-.btn-logout:hover {
-  background: var(--color-primary-soft);
-  transform: translateY(-1px);
+  justify-self: start;
+  font-size: 1rem;
 }
 
 .btn-logout::after {
@@ -161,7 +187,7 @@
   position: absolute;
   bottom: -30px;
   background: var(--color-tooltip-bg);
-  color: white;
+  // color: white;
   font-size: 0.65rem;
   padding: 3px 8px;
   border-radius: 6px;
@@ -170,6 +196,7 @@
   pointer-events: none;
   transition: opacity 0.2s ease, transform 0.2s ease;
   white-space: nowrap;
+  display: none;
 }
 .btn-logout:hover::after {
   opacity: 1;
@@ -178,7 +205,7 @@
 
 .theme-toggle-btn {
   margin-left: auto;
-  margin-right: 1rem;
+  // margin-right: 1rem;
   border: none;
   background: transparent;
   font-size: 1.2rem;
@@ -190,10 +217,8 @@
   cursor: pointer;
   font-weight: 600;
   font-size: 0.95rem;
-  padding: 8px 12px;
+
   border-radius: 8px;
-  background: var(--color-bg-soft);
-  color: var(--color-text-main);
   transition: all 0.2s ease;
   display: flex;
   align-items: center;
@@ -248,16 +273,6 @@
   .btn-cta {
     width: 100%;
     text-align: center;
-  }
-
-  .btn-logout {
-    justify-self: start;
-    font-size: 1rem;
-    padding: 10px;
-  }
-
-  .btn-logout::after {
-    display: none;
   }
 
   .btn-lang-toggle {

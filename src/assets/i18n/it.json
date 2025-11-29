@@ -7,13 +7,16 @@
     "ALLTRAVELS": "Tutti viaggi",
     "NEXTTRAVELS": "Da vedere",
     "STATISTICS": "Statistiche",
+    "USERS": "Amministrazione",
     "NEWTRAVEL": "Nuovo viaggio"
   },
   "LOGIN": {
     "MAIL_PLACEHOLDER": "Inserisci la mail",
+    "USERNAME_PLACEHOLDER": "Inserisci l'username",
     "PASSWORD_PLACEHOLDER": "Inserisci la password",
     "ERROR_FILL_ALL_FIELDS": "Compila tutti i campi",
     "INVALID_CREDENTIALS": "Credenziali errate",
+    "ERROR_REGISTER": "Errore! Riprova",
     "ERROR": "Errore"
   },
   "HOME_PAGE": {
@@ -108,5 +111,14 @@
     "ERROR.CANNOT_ADD_TRAVEL": "Errore! Non è possibile aggiungere il viaggio",
     "MESSAGE.TRAVEL_UPDATED": "Viaggio aggiornato",
     "MESSAGE.TRAVEL_ADDED": "Viaggio aggiunto"
+  },
+  "USERS_PAGE": {
+    "TITLE": "Utenti registrati",
+    "SUBTITLE": "Pagina di gestione degli utenti",
+    "DELETE": "Elimina"
+  },
+  "PROFILE_PAGE": {
+    "TITLE": "Profilo",
+    "SUBTITLE": "Informazioni dell'utente"
   }
 }
