@@ -15,8 +15,12 @@ export class AuthService {
   }
 
   // POST user administration
-  public getUserAdministration(): Observable<User> {
-    return this.http.post<User>(`${this.baseUrl}user/find_all_strict`, {});
+  public getUserAdministration(): Observable<User[]> {
+    return this.http.post<User[]>(`${this.baseUrl}user/find_all_strict`, {});
+  }
+  // DELETE user administration
+  public deleteUserAdministration(id: string) {
+    return this.http.delete(`${this.baseUrl}user/delete/${id}`);
   }
 
   // POST user
@@ -30,8 +34,18 @@ export class AuthService {
     return this.http.post<Login>(`${this.baseUrl}login`, { username, password });
   }
 
-  register(email: string, username: string, password: string, confirmPassword: string): Observable<Register> {
-    return this.http.post<Register>(`${this.baseUrl}user/register`, {email, username, password, confirmPassword });
+  register(
+    email: string,
+    username: string,
+    password: string,
+    confirmPassword: string
+  ): Observable<Register> {
+    return this.http.post<Register>(`${this.baseUrl}user/register`, {
+      email,
+      username,
+      password,
+      confirmPassword,
+    });
   }
 
   setRole(role: Roles) {

@@ -24,7 +24,7 @@ export class FilterService {
     return this.http.post<number[]>(`${this.baseUrlFilters}years/all`, {});
   }
 
-  public getUsers(): Observable<string[]> {
+  public getAuthors(): Observable<string[]> {
     return this.http.post<string[]>(`${this.baseUrlFilters}user/all`, {});
   }
 }

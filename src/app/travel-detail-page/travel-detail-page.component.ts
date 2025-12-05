@@ -70,7 +70,9 @@ export class TravelDetailPageComponent {
 
     try {
       await firstValueFrom(this.travelService.delete(travel.id));
-      this.toastService.showToastSuccess(this.translateService.instant('DETAIL_PAGE.SUCCESS_DELETING'));
+      this.toastService.showToastSuccess(
+        this.translateService.instant('DETAIL_PAGE.SUCCESS_DELETING')
+      );
       this.router.navigate(['/home']);
     } catch (error) {
       console.error('Errore durante l’eliminazione:', error);

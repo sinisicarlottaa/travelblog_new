@@ -147,25 +147,10 @@
   display: flex;
   gap: 0px;
   padding: auto 0px;
-  margin-right: 10px;
+  margin-right: 0px;
+  margin-left: 50px;
 }
 
-.btn-profile {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  font-size: 16px;
-  border-radius: 50%;
-  // transition: background 0.2s ease, transform 0.1s ease;
-  position: relative;
-  justify-self: start;
-  font-size: 1rem;
-  padding: 0px;
-  margin-left: 15px;
-}
 .btn-logout {
   display: flex;
   align-items: center;
@@ -232,8 +217,8 @@
 }
 
 /* ---------------------------------- */
-/* MEDIA QUERIES             */
-/* ---------------------------------- */
+/* MEDIA QUERIES             
+*/
 
 @media (max-width: 860px) {
   .nav-toggle-btn {

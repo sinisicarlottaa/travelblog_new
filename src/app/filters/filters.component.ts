@@ -28,7 +28,7 @@ export class FiltersComponent implements OnInit {
     country: new FormControl(''),
     year: new FormControl(null),
     rating: new FormControl(''),
-    user: new FormControl(''),
+    author: new FormControl(''),
   });
 
   constructor(public router: Router, private translateService: TranslateService) {
@@ -42,13 +42,13 @@ export class FiltersComponent implements OnInit {
 
   countries = signal<string[]>([]);
   years = signal<number[]>([]);
-  users = signal<string[]>([]);
+  author = signal<string[]>([]);
   loading = signal(false);
 
   async initAll() {
     try {
       this.loading.set(true);
-      forkJoin([this.loadCountry(), this.loadYears(), this.loadUser()]);
+      forkJoin([this.loadCountry(), this.loadYears(), this.loadAuthors()]);
     } catch (e) {
       console.log('errore');
     } finally {
@@ -66,8 +66,8 @@ export class FiltersComponent implements OnInit {
     this.years.set(years);
   }
 
-  public async loadUser() {
-    const users = await firstValueFrom(this.filterService.getUsers());
-    this.users.set(users);
+  public async loadAuthors() {
+    const authors = await firstValueFrom(this.filterService.getAuthors());
+    this.author.set(authors);
   }
 }

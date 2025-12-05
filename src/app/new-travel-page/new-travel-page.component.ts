@@ -119,7 +119,7 @@ export class NewTravelPageComponent implements OnInit {
       activities: value.activities,
       food: foodArray,
       rating: value.rating ?? 0,
-      user: '',
+      author: '',
     };
 
     this.isLoading = true;

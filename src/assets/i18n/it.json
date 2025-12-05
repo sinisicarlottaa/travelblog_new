@@ -40,10 +40,10 @@
     "ERROR_LOADING_TRAVEL": "Errore durante il caricamento del viaggio",
     "ERROR_DELETING": "Errore durante l'eliminazione",
     "ERROR": "Errore",
-    "SUCCESS_DELETING": "Viaggio rimosso con successo",
+    "SUCCESS_DELETING": "Rimosso con successo",
     "SUCCESS": "Successo",
-    "DELETING": "Il viaggio verrà eliminato definitivamente!",
-    "SURE_DELETING": "Sicuro di voler eliminare il viaggio?",
+    "DELETING": "Verrà eliminato definitivamente!",
+    "SURE_DELETING": "Sicuro di voler eliminarlo?",
     "DELETE": "Si, elimina",
     "CANCEL": "Annulla"
   },
@@ -116,9 +116,5 @@
     "TITLE": "Utenti registrati",
     "SUBTITLE": "Pagina di gestione degli utenti",
     "DELETE": "Elimina"
-  },
-  "PROFILE_PAGE": {
-    "TITLE": "Profilo",
-    "SUBTITLE": "Informazioni dell'utente"
   }
 }

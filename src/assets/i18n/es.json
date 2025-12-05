@@ -1,0 +1,116 @@
+{
+  "GENERAL": {
+    "LOADING": "Cargando..."
+  },
+  "HEADER": {
+    "MYTRAVELS": "Mis viajes",
+    "ALLTRAVELS": "Todos los viajes",
+    "NEXTTRAVELS": "Próximos por ver",
+    "STATISTICS": "Estadísticas",
+    "USERS": "Administración",
+    "NEWTRAVEL": "Nuevo viaje"
+  },
+  "LOGIN": {
+    "MAIL_PLACEHOLDER": "Introduce el correo",
+    "USERNAME_PLACEHOLDER": "Introduce el nombre de usuario",
+    "PASSWORD_PLACEHOLDER": "Introduce la contraseña",
+    "ERROR_FILL_ALL_FIELDS": "Rellena todos los campos",
+    "INVALID_CREDENTIALS": "Credenciales incorrectas",
+    "ERROR_REGISTER": "¡Error! Inténtalo de nuevo",
+    "ERROR": "Error"
+  },
+  "HOME_PAGE": {
+    "TITLE": "Últimos destinos visitados",
+    "ERROR_LOADING_TRAVELS": "Error al cargar los viajes"
+  },
+  "CARD": {
+    "BUTTON": "Más información"
+  },
+  "DETAIL_PAGE": {
+    "GO_BACK": "Volver a los viajes",
+    "EDIT_TRAVEL": "Editar viaje",
+    "DELETE_TRAVEL": "Eliminar viaje",
+    "ALREADY_SEEN": "Viaje ya visto",
+    "TO_SEE": "Aún no visto",
+    "DESCRIPTION": "Descripción",
+    "LIKED_MOST": "Lo que más me gustó",
+    "ACTIVITIES": "Actividades",
+    "FOOD": "Comida probada",
+    "ERROR_TRAVEL_NOT_FOUND": "Viaje no encontrado",
+    "ERROR_LOADING_TRAVEL": "Error al cargar el viaje",
+    "ERROR_DELETING": "Error al eliminar",
+    "ERROR": "Error",
+    "SUCCESS_DELETING": "Eliminado",
+    "SUCCESS": "Éxito",
+    "DELETING": "Será eliminado permanentemente",
+    "SURE_DELETING": "¿Estás seguro de que deseas eliminarlo?",
+    "DELETE": "Sí, eliminar",
+    "CANCEL": "Cancelar"
+  },
+  "FILTERS": {
+    "SEARCHBAR_PLACEHOLDER": "Buscar un destino",
+    "ALL": "Todos",
+    "COUNTRY": "País",
+    "YEAR": "Año",
+    "RATING": "Valoración",
+    "USER": "Usuario"
+  },
+  "GRAPHS": {
+    "TRAVELxYEARS": "Número de viajes por año",
+    "COUNTRIES": "Países visitados",
+    "NUMBER_TRAVELS": "Número de viajes",
+    "VISITED_COUNTRIES": "Países visitados",
+    "TITLE": "Estadísticas de viajes"
+  },
+  "VISITED_TRAVELS": {
+    "COUNTRY": "País",
+    "CITY": "Ciudad",
+    "YEAR": "Año",
+    "RATING": "Valoración"
+  },
+  "NEXT_TRAVELS": {
+    "TITLE": "Próximos viajes",
+    "SUBTITLE": "Tu lista de destinos por explorar."
+  },
+  "NEW_TRAVEL": {
+    "TITLE": "Añadir un nuevo viaje",
+    "SUBTITLE": "Añade detalles de un nuevo destino que visitaste.",
+    "TITLE_M": "Editar viaje",
+    "SUBTITLE_M": "Actualiza los detalles del destino seleccionado.",
+    "COUNTRY": "País",
+    "CITY": "Ciudad",
+    "YEAR": "Año",
+    "RATING": "Valoración",
+    "TYPE": "Tipo de viaje",
+    "URL": "URL de la imagen",
+    "DESCRIPTION": "Descripción",
+    "HIGHLIGHTS": "Lo que más me gustó",
+    "ACTIVITIES": "Actividades",
+    "FOOD_TITLE": "Platos tradicionales",
+    "FOOD": "Comida probada",
+    "PLACE": "Lugar donde lo probaste",
+    "COUNTRY_PLACEHOLDER": "Introduce el país (p. ej., Italia)",
+    "CITY_PLACEHOLDER": "Introduce la ciudad (p. ej., Pisa)",
+    "YEAR_PLACEHOLDER": "Introduce el año del viaje (p. ej., 2024)",
+    "RATING_PLACEHOLDER": "Da una valoración (1-5 estrellas)",
+    "TYPE_PLACEHOLDER": "Selecciona el tipo de viaje",
+    "URL_PLACEHOLDER": "Pega la URL de una imagen de portada",
+    "DESCRIPTION_PLACEHOLDER": "Describe brevemente el lugar...",
+    "HIGHLIGHTS_PLACEHOLDER": "Enumera los aspectos que más te gustaron",
+    "ACTIVITIES_PLACEHOLDER": "Detalla las actividades realizadas (p. ej., senderismo, visitas a museos)",
+    "FOOD_PLACEHOLDER": "¿Qué platos o comidas típicas probaste?",
+    "PLACE_PLACEHOLDER": "¿Dónde lo probaste?",
+    "SAVE": "Guardar",
+    "CANCEL": "Cancelar",
+    "ERROR.CANNOT_LOAD_TRAVEL": "No se puede cargar el viaje para editar",
+    "ERROR.CANNOT_UPDATE_TRAVEL": "¡Error! No se puede actualizar el viaje",
+    "ERROR.CANNOT_ADD_TRAVEL": "¡Error! No se puede añadir el viaje",
+    "MESSAGE.TRAVEL_UPDATED": "Viaje actualizado",
+    "MESSAGE.TRAVEL_ADDED": "Viaje añadido"
+  },
+  "USERS_PAGE": {
+    "TITLE": "Usuarios registrados",
+    "SUBTITLE": "Página de gestión de usuarios",
+    "DELETE": "Eliminar"
+  }
+}

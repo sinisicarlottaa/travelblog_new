@@ -21,13 +21,13 @@ export class VisitedAllTravelsPageComponent implements OnInit {
   travels = signal<Travel[]>([]);
   loading = signal(false);
 
-  filterActive = signal<Filter>({ country: '', rating: '', search: '', user: '', year: null });
+  filterActive = signal<Filter>({ country: '', rating: '', search: '', author: '', year: null });
   isFiltersActive = computed(
     () =>
       !!this.filterActive().country ||
       !!this.filterActive().rating ||
       !!this.filterActive().year ||
-      !!this.filterActive().user ||
+      !!this.filterActive().author ||
       !!this.filterActive().search
   );
 

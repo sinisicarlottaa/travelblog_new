@@ -24,7 +24,7 @@ export class HeaderComponent {
 
   constructor(private themeService: ThemeService, private translateService: TranslateService) {
     const saved = localStorage.getItem('lang');
-    const initial = saved || this.translateService.getCurrentLang() || 'en';
+    const initial = saved || this.translateService.getCurrentLang() || 'en' || 'es';
 
     this.currentLang.set(initial);
     this.translateService.use(initial);
@@ -53,8 +53,19 @@ export class HeaderComponent {
   }
 
   toggleLanguage() {
-    const next = this.currentLang() === 'en' ? 'it' : 'en';
+    const current = this.currentLang();
+    let next = 'en';
+
+    if (current === 'en') {
+      next = 'it';
+    } else if (current === 'it') {
+      next = 'es';
+    } else if (current === 'es') {
+      next = 'en';
+    }
+    // const next = this.currentLang() === 'en' ? 'it' : 'it' ? 'es' : 'es' ? 'en';
     this.translateService.use(next);
+    this.currentLang.set(next);
     localStorage.setItem('lang', next);
   }
 }

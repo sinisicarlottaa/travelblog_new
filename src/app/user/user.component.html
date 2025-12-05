@@ -1,17 +1,15 @@
 <!-- <div (click)="userOnClick.emit(user()!)"> -->
-  <ul class="user-list">
-    <li class="user-item">
-      <div class="user-info">
-        <span class="user-name">{{ user()?.username }}</span>
-        <span class="user-email">{{ user()?.email }}</span>
-      </div>
+<ul class="user-list">
+  <li class="user-item">
+    <div class="user-info">
+      <span class="user-name">{{ user()?.username }}</span>
+      <span class="user-email">{{ user()?.email }}</span>
+    </div>
 
-      <div class="user-actions">
-        <button class="user-btn">{{ user()?.role }}</button>
-      </div>
-      <div class="user-actions">
-        <button class="delete-btn">{{ 'USERS_PAGE.DELETE' | translate }}</button>
-      </div>
-    </li>
-  </ul>
+    <div class="user-actions">
+      <button class="role-btn">{{ user()?.role | lowercase }}</button>
+      <button class="delete-btn" (click)="onDelete()">{{ 'USERS_PAGE.DELETE' | translate }}</button>
+    </div>
+  </li>
+</ul>
 <!-- </div> -->

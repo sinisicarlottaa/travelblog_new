@@ -16,7 +16,7 @@ import { TranslatePipe } from '@ngx-translate/core';
 export class NextTravelsPageComponent {
   private travelService = inject(TravelService);
 
-  filterActive = signal<Filter>({ country: '', rating: '', search: '', user: '', year: null });
+  filterActive = signal<Filter>({ country: '', rating: '', search: '', author: '', year: null });
 
   ngOnInit(): void {
     this.loadTravels();

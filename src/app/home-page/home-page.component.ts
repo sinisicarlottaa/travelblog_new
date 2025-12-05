@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
 
   constructor(private translateService: TranslateService) {}
 
-  filterActive = signal<Filter>({ country: '', rating: '', search: '', user: '', year: null });
+  filterActive = signal<Filter>({ country: '', rating: '', search: '', author: '', year: null });
 
   ngOnInit(): void {
     this.getTravels();
@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit {
     try {
       this.loading.set(true);
       const travels = await firstValueFrom(this.travelService.getTravels(this.filterActive()));
-      const travel2 = travels.filter((t) => t.type === 'Y')
+      const travel2 = travels.filter((t) => t.type === 'Y');
       this.travels.set(travel2);
       console.log(travels);
     } catch (e) {

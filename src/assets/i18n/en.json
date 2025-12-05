@@ -38,12 +38,12 @@
     "FOOD": "Tried food",
     "ERROR_TRAVEL_NOT_FOUND": "Travel not found",
     "ERROR_LOADING_TRAVEL": "Error loading the travel",
-    "ERROR_DELETING": "Error deleting the travel",
+    "ERROR_DELETING": "Error deleting it",
     "ERROR": "Error",
-    "SUCCESS_DELETING": "Travel eliminated",
+    "SUCCESS_DELETING": "Eliminated",
     "SUCCESS": "Success",
-    "DELETING": "The trip will be permanently eliminated",
-    "SURE_DELETING": "Are you sure you want to eliminate the trip?",
+    "DELETING": "It will be permanently eliminated",
+    "SURE_DELETING": "Are you sure you want to eliminate it?",
     "DELETE": "Yes, delete it",
     "CANCEL": "Cancel"
   },
@@ -112,9 +112,5 @@
     "TITLE": "Registered users",
     "SUBTITLE": "User management page",
     "DELETE": "Delete"
-  },
-  "PROFILE_PAGE": {
-    "TITLE": "Profile",
-    "SUBTITLE": "User informations"
   }
 }

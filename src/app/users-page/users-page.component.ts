@@ -26,7 +26,8 @@ export class UsersPageComponent {
     try {
       this.loading.set(true);
       const users = await firstValueFrom(this.authService.getUserAdministration());
-      console.log('111', users);
+      const sorted = users.sort((a, b) => a.role.localeCompare(b.role));
+      this.users.set(sorted);
     } catch (e) {
       console.log('errore');
     } finally {

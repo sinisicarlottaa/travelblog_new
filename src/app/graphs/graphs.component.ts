@@ -31,7 +31,7 @@ export class GraphsComponent implements AfterViewInit {
     });
   }
 
-  filterActive = signal<Filter>({ country: '', rating: '', search: '', user: '', year: null });
+  filterActive = signal<Filter>({ country: '', rating: '', search: '', author: '', year: null });
 
   palette = [
     // neutri chiari
@@ -150,7 +150,7 @@ export class GraphsComponent implements AfterViewInit {
     //   (a, b) => countsCountry[b] - countsCountry[a]
     // );
     // const valuesCountry = countries.map((c) => countsCountry[c]);
-    const countries =  travelsCountry.map((el) => el.u).sort((a, b) => b-a)
+    const countries = travelsCountry.map((el) => el.u).sort((a, b) => b - a);
 
     this.yearChart = new Chart(this.yearChartCanvas.nativeElement, {
       type: 'bar',

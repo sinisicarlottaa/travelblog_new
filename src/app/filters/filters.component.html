@@ -52,9 +52,9 @@
       @if(router.url === '/visited-alltravels'){
       <div class="filter-control">
         <label for="userFilter">{{ 'FILTERS.USER' | translate }}</label>
-        <select id="userFilter" #userSelect formControlName="user">
+        <select id="userFilter" #authorSelect formControlName="author">
           <option value="">{{ 'FILTERS.ALL' | translate }}</option>
-          @for (user of users(); track user) {
+          @for (user of author(); track user) {
           <option>{{ user }}</option>
           }
         </select>

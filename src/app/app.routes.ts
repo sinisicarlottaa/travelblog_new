@@ -60,12 +60,6 @@ export const routes: Routes = [
       ),
   },
   {
-    path: 'profile',
-    canActivate: [AuthGuard],
-    loadComponent: () =>
-      import('./profile-page/profile-page.component').then((m) => m.ProfilePageComponent),
-  },
-  {
     path: 'new-travel',
     canActivate: [AuthGuard],
     loadComponent: () =>
